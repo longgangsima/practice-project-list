@@ -7,22 +7,17 @@ type Props = {
 };
 
 export default function ProjectHeaderNav({ currentPath }: Props) {
-  console.log('projectList: ', projectList);
-  console.log('currentPath: ', currentPath);
-
   const currentIndex = projectList.findIndex(p => p.path === currentPath);
+
+  // Fallback for invalid path
   if (currentIndex === -1) {
     return <div>Project not found</div>;
   }
+
   const hasMultipleProjects = projectList.length > 1;
-  const prev = hasMultipleProjects && projectList[(currentIndex - 1 + projectList.length) % projectList.length];
-  const next = hasMultipleProjects && projectList[(currentIndex + 1) % projectList.length];
+  const prev = hasMultipleProjects ? projectList[(currentIndex - 1 + projectList.length) % projectList.length] : null;
 
-  console.log('currentIndex: ', currentIndex);
-  const header_name = projectList[currentIndex]?.name;
-  console.log('projectList: ', projectList);
-  console.log('header_name: ', header_name);
-
+  const next = hasMultipleProjects ? projectList[(currentIndex + 1) % projectList.length] : null;
   return (
     <div
       style={{
@@ -36,16 +31,20 @@ export default function ProjectHeaderNav({ currentPath }: Props) {
     >
       {hasMultipleProjects ? (
         <>
-          <Link to={prev.name} style={{ textDecoration: 'none' }}>
-            ← {prev.name}
-          </Link>
-          <div style={{ margin: 0 }}>{header_name}</div>
-          <Link to={next.name} style={{ textDecoration: 'none' }}>
-            {next.name} →
-          </Link>
+          {prev && (
+            <Link to={prev.path} style={{ textDecoration: 'none' }}>
+              ← {prev.name}
+            </Link>
+          )}
+          <h1 style={{ margin: 0 }}>{projectList[currentIndex].name}</h1>
+          {next && (
+            <Link to={next.path} style={{ textDecoration: 'none' }}>
+              {next.name} →
+            </Link>
+          )}
         </>
       ) : (
-        <div style={{ margin: 0 }}>{header_name}</div>
+        <div style={{ margin: '0 auto' }}>{projectList[currentIndex].name}</div>
       )}
     </div>
   );
