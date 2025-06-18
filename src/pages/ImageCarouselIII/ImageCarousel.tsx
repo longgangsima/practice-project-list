@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectLayout from '../../components/ProjectLayout';
 import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import './styles.css'; // relative to ImageCarouselIIII or adjust path
@@ -30,7 +29,7 @@ const images = [
   },
 ];
 
-export default function CalculatorPage() {
+export default function ImageCarousel() {
   return (
     <ProjectLayout currentPath="/image-carousel-iii">
       <ImageCarouselContainer images={images} />
