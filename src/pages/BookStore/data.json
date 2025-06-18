@@ -1,0 +1,39 @@
+{
+  "booklist": {
+    "A": [
+      {
+        "id": "b1",
+        "title": "A Tale of Two Cities",
+        "authorId": "a1",
+        "year": 1859
+      },
+      {
+        "id": "b2",
+        "title": "Animal Farm",
+        "authorId": "a2",
+        "year": 1945
+      }
+    ],
+    "B": [
+      {
+        "id": "b3",
+        "title": "Brave New World",
+        "authorId": "a3",
+        "year": 1932
+      }
+    ],
+    "C": [
+      {
+        "id": "b4",
+        "title": "Crime and Punishment",
+        "authorId": "a4",
+        "year": 1866
+      }
+    ]
+  },
+  "users": [
+    { "name": "Alice", "email": "alice@example.com" },
+    { "name": "Aaron", "email": "aaron@example.com" },
+    { "name": "Bob", "email": "bob@example.com" }
+  ]
+}
