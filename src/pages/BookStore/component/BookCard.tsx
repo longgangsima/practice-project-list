@@ -7,7 +7,6 @@ export default function BookCard({ book }) {
         padding: '1rem',
         marginBottom: '0.5rem',
       }}
-      key={book.id}
     >
       {book.title}
     </div>
