@@ -23,14 +23,51 @@ type BookWithAuthor = BookType & {
   genre: string;
 };
 
+// 🔄 Grouping Functions
+const groupBooksByAuthorLastName = (bookList: BookWithAuthor[]) => {
+  return bookList.reduce((acc: Record<string, BookWithAuthor[]>, book) => {
+    const nameParts = book.author.name.split(' ');
+    const lastName = nameParts[nameParts.length - 1]; // Get last part of name
+    const firstLetter = lastName.charAt(0).toUpperCase();
+
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(book);
+    return acc;
+  }, {});
+};
+
+const groupBooksByYear = (bookList: BookWithAuthor[]) => {
+  return bookList.reduce((acc: Record<string, BookWithAuthor[]>, book) => {
+    // Group by decade for better visualization
+    const decade = Math.floor(book.year / 10) * 10;
+    const yearRange = `${decade}s`;
+
+    if (!acc[yearRange]) {
+      acc[yearRange] = [];
+    }
+    acc[yearRange].push(book);
+    return acc;
+  }, {});
+};
 export default function BookStore() {
-  const [booksList, setBookList] = useState<Record<string, BookWithAuthor[]>>({});
+  const [rawBooksData, setRawBooksData] = useState<BookWithAuthor[]>([]);
+  const [displayList, setDisplayList] = useState<Record<string, BookWithAuthor[]>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isGroupByAuthor, setIsGroupByAuthor] = useState<boolean>(true);
 
   useEffect(() => {
     loadBooksData();
   }, []);
+
+  // 🔄 When data or grouping method changes, update display list
+  useEffect(() => {
+    if (rawBooksData.length > 0) {
+      updateDisplayList();
+    }
+  }, [rawBooksData, isGroupByAuthor]);
 
   const loadBooksData = async () => {
     try {
@@ -41,112 +78,141 @@ export default function BookStore() {
 
       // 使用简化的API获取完整数据
       const result = await fetchBooksWithAuthors();
-
-      setBookList(result.grouped);
-
-      console.log('✅ Books data loaded successfully:', {
-        totalGroups: Object.keys(result.grouped).length,
-        totalBooks: result.data.length,
-      });
+      setRawBooksData(result.data);
     } catch (err) {
-      console.error('❌ Error loading books data:', err);
       setError(err instanceof Error ? err.message : 'Failed to load books data');
     } finally {
       setLoading(false);
     }
   };
 
-  // 🏗️ 处理复杂嵌套结构的添加书籍逻辑
+  const updateDisplayList = () => {
+    let grouped: Record<string, BookWithAuthor[]>;
+
+    if (isGroupByAuthor) {
+      grouped = groupBooksByAuthorLastName(rawBooksData);
+    } else {
+      grouped = groupBooksByYear(rawBooksData);
+    }
+
+    // Sort groups by key and sort books within each group
+    const sortedGrouped: Record<string, BookWithAuthor[]> = {};
+    Object.keys(grouped)
+      .sort()
+      .forEach(key => {
+        sortedGrouped[key] = grouped[key].sort((a, b) => a.title.localeCompare(b.title));
+      });
+
+    setDisplayList(sortedGrouped);
+  };
+
+  // 🏗️ 处理添加书籍逻辑 - 直接添加到原始数据，让useEffect处理重新分组
   const handleAddBook = (book: BookType) => {
     console.log('Adding book:', book);
-    const firstLetter = book.title.charAt(0).toUpperCase();
 
-    setBookList(prevBookList => {
-      // ✅ 当前使用的是最佳方案：手动深拷贝 (Manual Deep Copy)
-      // 📊 性能对比:
-      // 1. 手动深拷贝 (当前方案): ~5-10ms ⚡ 最快
-      // 2. 辅助函数: ~15-25ms
-      // 3. Immer库: ~20-30ms
-      // 4. JSON.parse/stringify: ~50-100ms 最慢
-      //
-      // 🎯 为什么选择手动深拷贝？
-      // - 我们只有2层嵌套: booksList[letter][books]
-      // - 性能最优，代码可读性也很好
-      // - 对于4+层嵌套才考虑Immer或辅助函数
+    // 检查书籍是否已存在
+    const existingBook = rawBooksData.find(b => b.title === book.title);
+    if (existingBook) {
+      alert(`The book "${book.title}" already exists!`);
+      return;
+    }
 
-      // 1. 为整个对象创建新引用
-      const newBookList = { ...prevBookList };
+    // 创建新的书籍对象
+    const newBook: BookWithAuthor = {
+      ...book,
+      id: `manual_${Date.now()}`, // 生成唯一ID
+      genre: 'Manual Entry', // 添加默认类型
+      author: {
+        id: 'unknown',
+        name: 'Unknown Author',
+        nationality: 'Unknown',
+        birthYear: 0,
+      },
+    };
 
-      // 2. 确保字母组存在
-      if (!newBookList[firstLetter]) {
-        newBookList[firstLetter] = [];
-      }
+    // 添加到原始数据中，useEffect会自动重新分组
+    setRawBooksData(prevData => [...prevData, newBook]);
 
-      // 3. 为数组也创建新的引用（重要！避免mutation）
-      const letterGroup = [...newBookList[firstLetter]];
-
-      // 4. 检查书籍是否已存在
-      const existingBook = letterGroup.find(b => b.title === book.title);
-      if (existingBook) {
-        alert(`The book "${book.title}" already exists in group ${firstLetter}`);
-        return prevBookList; // 返回原状态，不更新
-      }
-
-      // 5. 创建新的书籍对象
-      const newBook: BookWithAuthor = {
-        ...book,
-        id: `manual_${Date.now()}`, // 生成唯一ID
-        genre: 'Manual Entry', // 添加默认类型
-        author: {
-          id: 'unknown',
-          name: 'Unknown Author',
-          nationality: 'Unknown',
-          birthYear: 0,
-        },
-      };
-
-      // 6. 添加到数组
-      letterGroup.push(newBook);
-
-      // 7. 排序（按标题）
-      letterGroup.sort((a, b) => a.title.localeCompare(b.title));
-
-      // 8. 更新状态
-      newBookList[firstLetter] = letterGroup;
-
-      console.log(`✅ Book "${book.title}" added to group ${firstLetter}`);
-      alert(`The book "${book.title}" has been successfully added to group ${firstLetter}!`);
-
-      return newBookList;
-    });
+    console.log(`✅ Book "${book.title}" added successfully`);
+    alert(`The book "${book.title}" has been successfully added!`);
   };
+  const handleToggle = () => {
+    setIsGroupByAuthor(prev => !prev);
+    console.log(`🔄 Switching to group by ${!isGroupByAuthor ? 'Author' : 'Year'}`);
+  };
+
+  if (loading) {
+    return (
+      <ProjectLayout currentPath="/book-store">
+        <div style={{ textAlign: 'center', padding: '2rem' }}>
+          <div style={{ fontSize: '2rem' }}>📚</div>
+          <p>Loading books...</p>
+        </div>
+      </ProjectLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <ProjectLayout currentPath="/book-store">
+        <div style={{ textAlign: 'center', padding: '2rem', color: 'red' }}>
+          <p>Error: {error}</p>
+          <button onClick={loadBooksData}>Retry</button>
+        </div>
+      </ProjectLayout>
+    );
+  }
 
   return (
     <ProjectLayout currentPath="/book-store">
-      {/* 正确的API设计说明 */}
+      {/* 🔄 Toggle Controls */}
       <div
         style={{
           margin: '1rem 0',
           padding: '1rem',
-          backgroundColor: '#e8f4fd',
+          backgroundColor: '#f8f9fa',
           borderRadius: '8px',
-          border: '1px solid #3498db',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '1rem',
         }}
       >
-        <h3>🎯 正确的API设计模式</h3>
-        <p>
-          <strong>API 1:</strong> 获取task IDs列表 → <code>fetchTaskSummary()</code>
-        </p>
-        <p>
-          <strong>API 2:</strong> 单个task详情 → <code>fetchTaskById(taskId)</code> (ID append到URL)
-        </p>
-        <p>
-          <strong>关键点:</strong> 并发调用所有task APIs，处理404错误，避免超时
-        </p>
+        <span style={{ fontWeight: 'bold' }}>📊 Group by:</span>
+        <button
+          onClick={handleToggle}
+          style={{
+            padding: '0.5rem 1rem',
+            borderRadius: '4px',
+            border: '2px solid #007bff',
+            backgroundColor: isGroupByAuthor ? '#007bff' : '#fff',
+            color: isGroupByAuthor ? '#fff' : '#007bff',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+          }}
+        >
+          👤 Author Name
+        </button>
+        <button
+          onClick={handleToggle}
+          style={{
+            padding: '0.5rem 1rem',
+            borderRadius: '4px',
+            border: '2px solid #007bff',
+            backgroundColor: !isGroupByAuthor ? '#007bff' : '#fff',
+            color: !isGroupByAuthor ? '#fff' : '#007bff',
+            cursor: 'pointer',
+            fontWeight: 'bold',
+          }}
+        >
+          📅 Publication Year
+        </button>
+        <span style={{ color: '#666', marginLeft: '1rem' }}>
+          Currently showing: <strong>{isGroupByAuthor ? 'Author Groups' : 'Year Groups'}</strong>
+        </span>
       </div>
 
       {/* Books Display */}
-      {Object.entries(booksList).map(([key, value]) => {
+      {Object.entries(displayList).map(([key, books]) => {
         return (
           <div key={key} style={{ marginBottom: '2rem' }}>
             <h2
@@ -158,7 +224,7 @@ export default function BookStore() {
                 paddingBottom: '0.5rem',
               }}
             >
-              📚 Group {key} ({value.length} books)
+              📚 {isGroupByAuthor ? `Author Group "${key}"` : `${key} Books`} ({books.length} books)
             </h2>
             <div
               style={{
@@ -167,7 +233,7 @@ export default function BookStore() {
                 gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               }}
             >
-              {value.map(book => (
+              {books.map(book => (
                 <BookCard key={book.id} book={book} />
               ))}
             </div>
@@ -175,7 +241,11 @@ export default function BookStore() {
         );
       })}
 
-      <BookForm onAdd={() => console.log('no need for level 3:')} />
+      {/* Add Book Form */}
+      <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+        <h3>📝 Add New Book</h3>
+        <BookForm onAdd={handleAddBook} />
+      </div>
 
       {/* Add loading styles */}
       <style>{`

@@ -149,14 +149,14 @@ export const fetchBooksWithAuthors = async () => {
     return {
       success: true,
       data: booksWithAuthors,
-      grouped,
+      //   validBooks,
       summary: {
         totalBooksFound: books.length,
         totalAuthorsFound: successfulAuthors.length,
         validBooksAfterFilter: booksWithAuthors.length,
         filteredOutBooks: books.length - booksWithAuthors.length,
         failedAuthorIds,
-        groups: Object.keys(grouped).length,
+        // groups: Object.keys(validBooks).length,
       },
     };
   } catch (error) {
