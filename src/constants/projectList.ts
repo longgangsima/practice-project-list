@@ -7,4 +7,6 @@ export const projectList: ProjectItem[] = [
   // { name: 'Calculator', path: '/calculator' },
   { name: 'Image Carousel III', path: '/image-carousel-iii' },
   { name: 'Book Store', path: '/book-store' },
+  // { name: 'Trading Chart', path: '/trading-chart' },
+  { name: 'Restaurant System', path: '/restaurant-system' },
 ];
