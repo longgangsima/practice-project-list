@@ -1,0 +1,118 @@
+.project-list {
+  width: 100%;
+}
+
+.project-list__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-list__item {
+  margin-bottom: 0.75rem;
+}
+
+.project-list__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #007bff;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.project-list__link:hover {
+  background-color: #f8f9fa;
+  border-color: #007bff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-list__link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+.project-list__content {
+  flex: 1;
+}
+
+.project-list__title {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.project-list__description {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.project-list__arrow {
+  font-size: 1.25rem;
+  color: #007bff;
+  margin-left: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.project-list__link:hover .project-list__arrow {
+  transform: translateX(0.25rem);
+}
+
+/* Grid variant */
+.project-list--grid .project-list__items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.project-list--grid .project-list__item {
+  margin-bottom: 0;
+}
+
+/* Compact variant */
+.project-list--compact .project-list__link {
+  padding: 0.75rem;
+}
+
+.project-list--compact .project-list__title {
+  font-size: 1rem;
+}
+
+.project-list--compact .project-list__arrow {
+  font-size: 1rem;
+}
+
+/* Empty state */
+.project-list-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #6c757d;
+}
+
+.project-list-empty p {
+  margin: 0;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .project-list--grid .project-list__items {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-list__link {
+    padding: 0.75rem;
+  }
+  
+  .project-list__title {
+    font-size: 1rem;
+  }
+}

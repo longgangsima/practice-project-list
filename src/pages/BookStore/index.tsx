@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProjectLayout from '../../components/ProjectLayout';
+import { ProjectLayout } from '../../components';
 import { fetchBooksWithAuthors } from './api/simpleApi';
 import BookCard from './component/BookCard';
 import BookForm from './component/BookForm';

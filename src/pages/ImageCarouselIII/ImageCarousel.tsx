@@ -1,4 +1,4 @@
-import ProjectLayout from '../../components/ProjectLayout';
+import { ProjectLayout } from '../../components';
 import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import './styles.css'; // relative to ImageCarouselIIII or adjust path
 

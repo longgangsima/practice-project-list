@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ProjectLayout from '../../components/ProjectLayout';
+import { ProjectLayout } from '../../components';
 import { Order } from '../../types';
 import FormOrder from './component/FormOrder';
 import OrderCard from './component/OrderCard';
