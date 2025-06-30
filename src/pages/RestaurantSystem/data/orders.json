@@ -1,0 +1,38 @@
+[
+  {
+    "id": "3c98f5f1-442d-4a2e-93f7-5e8a48b6aa01",
+    "customer": "Alice",
+    "spice": "Mild",
+    "base": "Salad Bowl",
+    "protein": "Grilled Chicken",
+    "dressings": ["Balsamic Vinaigrette", "Ranch"],
+    "quantity": 2,
+    "pickupDate": "2025-07-01",
+    "comments": "No onions please",
+    "address": "123 Apple St, Springfield"
+  },
+  {
+    "id": "fc82dc7b-e29a-4b15-a3d6-a958cc9e6a6b",
+    "customer": "Bob",
+    "spice": "Medium",
+    "base": "Grain Bowl",
+    "protein": "Tofu",
+    "dressings": [],
+    "quantity": 1,
+    "pickupDate": "2025-07-02",
+    "comments": "",
+    "address": "456 Orange Ave, Lakeside"
+  },
+  {
+    "id": "b1f1a770-38f2-4bd8-9b4d-66f0fa7f6b6c",
+    "customer": "Clara",
+    "spice": "Hot",
+    "base": "Noodle Bowl",
+    "protein": "Steak",
+    "dressings": ["Caesar"],
+    "quantity": 3,
+    "pickupDate": "2025-07-03",
+    "comments": "Extra spicy and gluten-free",
+    "address": "789 Banana Blvd, Hilltown"
+  }
+]
