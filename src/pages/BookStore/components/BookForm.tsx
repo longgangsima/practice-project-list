@@ -16,7 +16,7 @@ export default function BookForm({ onAdd }: Props) {
 
   const isBtnDisabled = formData.authorId.trim() && formData.id.trim() && formData.title.trim() && formData.year > 0;
 
-  const handleOnSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (isBtnDisabled) {
       onAdd(formData);
@@ -30,7 +30,7 @@ export default function BookForm({ onAdd }: Props) {
   };
 
   return (
-    <form onSubmit={handleOnSubmit}>
+    <form onSubmit={handleSubmit}>
       <input name="id" type="string" value={formData.id} onChange={handleFormOnChange} placeholder="enter book id" />
       <input name="title" type="string" value={formData.title} onChange={handleFormOnChange} placeholder="enter book title" />
       <input name="authorId" type="string" value={formData.authorId} onChange={handleFormOnChange} placeholder="enter book authorId" />

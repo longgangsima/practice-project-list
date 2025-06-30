@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ProjectLayout from '../../components/ProjectLayout';
-import { Order } from '../../types';
-import FormOrder from './component/FormOrder';
-import OrderCard from './component/OrderCard';
+import { ProjectLayout } from '../../components';
+import { Order } from './types';
+import FormOrder from './components/FormOrder';
+import OrderCard from './components/OrderCard';
 import optionData from './data/optionData.json';
 import orders from './data/orders.json';
 import './styles/basic.css';

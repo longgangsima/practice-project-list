@@ -2,18 +2,18 @@
   max-width: 600px;
   margin: 0 auto; /* horizontally center the whole block */
   padding: 2rem 1rem;
-}
-.carousel-page-wrapper h1 {
-  text-align: left; /* or center if you prefer */
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-.wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Keep horizontal centering */
-  padding: 2rem 1rem; /* Add spacing */
-  gap: 1rem; /* Add gap between heading and carousel */
+  align-items: center; /* Center everything horizontally */
+  gap: 1rem; /* Add space between title and carousel */
+}
+
+.carousel-page-wrapper h1 {
+  text-align: center; /* Center the title */
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-weight: 600;
 }
 
 .image-carousel {
@@ -22,6 +22,8 @@
   overflow: hidden;
   width: min(600px, 100vw);
   position: relative;
+  border-radius: 8px; /* Add some visual polish */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Add depth */
 }
 
 .image-carousel__image {

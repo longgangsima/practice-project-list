@@ -30,12 +30,12 @@ import { v4 as generateId } from 'uuid';
   */
 
 const FormOrder = ({ onAdd, optionData }) => {
-  const bases = optionData['dish'];
+  const bases = optionData['base'] || optionData['dish']; // Support both 'base' and legacy 'dish'
   const proteins = optionData['protein'];
   const spices = optionData['spice'];
   const dressings = optionData['dressings'];
 
-  const [formOrder, setFormOrder] = useState({
+  const [formData, setFormData] = useState({
     customer: '',
     spice: '',
     base: '',
@@ -47,15 +47,15 @@ const FormOrder = ({ onAdd, optionData }) => {
     address: '',
   });
 
-  const handleOnSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
     // ✅ Enhanced validation for all required fields
     const requiredFields = ['customer', 'base', 'protein', 'spice', 'address'];
-    const missingFields = requiredFields.filter(field => !formOrder[field]);
+    const missingFields = requiredFields.filter(field => !formData[field]);
     
-    if (missingFields.length > 0 || formOrder.quantity < 1) {
-      alert(`Please fill in all required fields: ${missingFields.join(', ')}${formOrder.quantity < 1 ? ', quantity must be at least 1' : ''}`);
+    if (missingFields.length > 0 || formData.quantity < 1) {
+      alert(`Please fill in all required fields: ${missingFields.join(', ')}${formData.quantity < 1 ? ', quantity must be at least 1' : ''}`);
       return;
     }
 
@@ -63,14 +63,14 @@ const FormOrder = ({ onAdd, optionData }) => {
       // ✅ Create proper order object with id
       const newOrder = {
         id: generateId(),
-        ...formOrder,
+        ...formData,
       };
 
       // ✅ Call onAdd with error handling
       onAdd(newOrder);
 
       // ✅ Reset form after successful submission
-      setFormOrder({
+      setFormData({
         customer: '',
         spice: '',
         base: '',
@@ -89,19 +89,19 @@ const FormOrder = ({ onAdd, optionData }) => {
     }
   };
 
-  const handleOnChange = e => {
+  const handleChange = e => {
     const name = e.target.name;
     const value = e.target.value;
-    setFormOrder(prevForm => ({ ...prevForm, [name]: value })); // ✅ Fixed: functional update
+    setFormData(prevForm => ({ ...prevForm, [name]: value })); // ✅ Fixed: functional update
   };
 
   useEffect(() => {
-    console.log('formOrder: ', formOrder);
-  }, [formOrder]);
+    console.log('formData: ', formData);
+  }, [formData]);
 
   const handleCheckbox = e => {
     const { checked, value } = e.target;
-    setFormOrder(prevForm => {
+    setFormData(prevForm => {
       // ✅ Fix: Create a proper copy of the array
       const newDressings = [...prevForm.dressings];
       if (checked) {
@@ -124,21 +124,21 @@ const FormOrder = ({ onAdd, optionData }) => {
   };
 
   return (
-    <form className="form-order" onSubmit={handleOnSubmit}>
+    <form className="form-order" onSubmit={handleSubmit}>
       <label>
         {'Customer: '}
         <input
           type="text"
           name="customer"
-          value={formOrder.customer}
+          value={formData.customer}
           placeholder="Enter customer name"
           required
-          onChange={handleOnChange}
+          onChange={handleChange}
         />
       </label>
       <label>
         {'Base Dish: '}
-        <select className="order-base" required name="base" value={formOrder.base} onChange={handleOnChange}>
+        <select className="order-base" required name="base" value={formData.base} onChange={handleChange}>
           <option value="">Select a base dish</option>
           {Object.keys(bases).map(key => (
             <option key={key} value={bases[key]}>
@@ -149,7 +149,7 @@ const FormOrder = ({ onAdd, optionData }) => {
       </label>
       <label>
         {'Protein: '}
-        <select className="order-protein" required name="protein" value={formOrder.protein} onChange={handleOnChange}>
+        <select className="order-protein" required name="protein" value={formData.protein} onChange={handleChange}>
           <option value="">Select a protein</option>
           {Object.keys(proteins).map(key => (
             <option key={key} value={proteins[key]}>
@@ -166,8 +166,8 @@ const FormOrder = ({ onAdd, optionData }) => {
               type="radio"
               name="spice"
               value={spices[key]}
-              checked={formOrder.spice === spices[key]}
-              onChange={handleOnChange}
+              checked={formData.spice === spices[key]}
+              onChange={handleChange}
               required
             />
             {spices[key]}
@@ -183,7 +183,7 @@ const FormOrder = ({ onAdd, optionData }) => {
               className={`dressings-${dressings[key]}`}
               name="dressings"
               value={dressings[key]}
-              checked={formOrder.dressings.includes(dressings[key])}
+              checked={formData.dressings.includes(dressings[key])}
               onChange={handleCheckbox}
             />
             {dressings[key]}

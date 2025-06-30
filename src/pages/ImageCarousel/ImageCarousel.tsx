@@ -1,4 +1,4 @@
-import ProjectLayout from '../../components/ProjectLayout';
+import { ProjectLayout } from '../../components';
 import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import './styles.css'; // relative to ImageCarouselIIII or adjust path
 
@@ -31,8 +31,11 @@ const images = [
 
 export default function ImageCarousel() {
   return (
-    <ProjectLayout currentPath="/image-carousel-iii">
-      <ImageCarouselContainer images={images} />
+    <ProjectLayout currentPath="/image-carousel">
+      <div className="carousel-page-wrapper">
+        <h1>Image Carousel</h1>
+        <ImageCarouselContainer images={images} />
+      </div>
     </ProjectLayout>
   );
 }
