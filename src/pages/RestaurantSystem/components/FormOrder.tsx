@@ -129,11 +129,24 @@ const FormOrder = ({ onAdd, optionData }) => {
     <form className="form-order" onSubmit={handleSubmit}>
       <label>
         {'Customer: '}
-        <input type="text" name="customer" value={formData.customer} placeholder="Enter customer name" required onChange={handleChange} />
+        <input
+          type="text"
+          name="customer"
+          value={formData.customer}
+          placeholder="Enter customer name"
+          required
+          onChange={handleChange}
+        />
       </label>
       <label>
         {'Base Dish: '}
-        <select className="order-base" required name="base" value={formData.base} onChange={handleChange}>
+        <select
+          className="order-base"
+          required
+          name="base"
+          value={formData.base}
+          onChange={handleChange}
+        >
           <option value="">Select a base dish</option>
           {Object.keys(bases).map(key => (
             <option key={key} value={bases[key]}>
@@ -144,7 +157,13 @@ const FormOrder = ({ onAdd, optionData }) => {
       </label>
       <label>
         {'Protein: '}
-        <select className="order-protein" required name="protein" value={formData.protein} onChange={handleChange}>
+        <select
+          className="order-protein"
+          required
+          name="protein"
+          value={formData.protein}
+          onChange={handleChange}
+        >
           <option value="">Select a protein</option>
           {Object.keys(proteins).map(key => (
             <option key={key} value={proteins[key]}>

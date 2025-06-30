@@ -95,10 +95,14 @@ const updateNestedProperty = (obj, path, updateFn) => {
 
 const handleAddBook = book => {
   setState(prev =>
-    updateNestedProperty(prev, ['stores', 'downtown', 'categories', 'fiction', 'letterGroups', 'A'], letterGroup => ({
-      ...letterGroup,
-      books: [...letterGroup.books, book],
-    }))
+    updateNestedProperty(
+      prev,
+      ['stores', 'downtown', 'categories', 'fiction', 'letterGroups', 'A'],
+      letterGroup => ({
+        ...letterGroup,
+        books: [...letterGroup.books, book],
+      })
+    )
   );
 };
 ```

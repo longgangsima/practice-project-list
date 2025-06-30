@@ -47,11 +47,11 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .project-page-wrapper {
     padding: 1rem 0.75rem;
   }
-  
+
   .project-page-wrapper--full {
     padding-left: 1rem;
     padding-right: 1rem;

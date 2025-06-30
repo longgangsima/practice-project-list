@@ -5,6 +5,7 @@ This file tracks the movement of documentation files to maintain reference links
 ## File Movements (June 29, 2025)
 
 ### React Concepts Guides
+
 - `src/pages/BookStore/array-methods-guide.md` → `docs/guides/react-concepts/array-methods-guide.md`
 - `src/pages/BookStore/shallow-copy-guide.md` → `docs/guides/react-concepts/shallow-copy-guide.md`
 - `src/pages/BookStore/nested-update-guide.md` → `docs/guides/react-concepts/nested-update-guide.md`
@@ -12,14 +13,17 @@ This file tracks the movement of documentation files to maintain reference links
 - `src/pages/BookStore/correct-api-guide.md` → `docs/guides/react-concepts/correct-api-guide.md`
 
 ### Project Documentation (Moved Back)
-- `docs/projects/bookstore/README.md` → `src/pages/BookStore/README.md` *(Moved back for development convenience)*
-- `docs/projects/restaurant-system/README.md` → `src/pages/RestaurantSystem/README.md` *(Moved back for development convenience)*
+
+- `docs/projects/bookstore/README.md` → `src/pages/BookStore/README.md` _(Moved back for development convenience)_
+- `docs/projects/restaurant-system/README.md` → `src/pages/RestaurantSystem/README.md` _(Moved back for development convenience)_
 
 ### Testing Documentation
+
 - `src/pages/RestaurantSystem/__tests__/test-setup-guide.md` → `docs/guides/testing/test-setup-guide.md`
 - `src/pages/RestaurantSystem/__tests__/DisplayOrders.manual-test.md` → `docs/guides/testing/DisplayOrders.manual-test.md`
 
 ### Backend Documentation
+
 - `backend/README.md` → `docs/backend/README.md`
 
 ## New Structure Benefits
@@ -44,6 +48,7 @@ If any external references or bookmarks point to the old file locations, they sh
 4. **Git Workflow** - Project changes and docs can be committed together
 
 **Structure:**
+
 - `docs/` - Contains cross-project guides, concepts, and general documentation
 - `src/pages/[Project]/README.md` - Project-specific documentation stays with the code
 

@@ -8,7 +8,7 @@ const BOOKS_FILE = path.join(__dirname, '../data/bookstore/books.json');
 const AUTHORS_FILE = path.join(__dirname, '../data/bookstore/authors.json');
 
 // Helper functions
-const readJSONFile = (filePath) => {
+const readJSONFile = filePath => {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(data);
@@ -37,7 +37,7 @@ router.get('/books', (req, res) => {
   res.json({
     success: true,
     data: books,
-    message: 'Books fetched successfully'
+    message: 'Books fetched successfully',
   });
 });
 
@@ -50,19 +50,19 @@ router.get('/authors', (req, res) => {
   res.json({
     success: true,
     data: authors,
-    message: 'Authors fetched successfully'
+    message: 'Authors fetched successfully',
   });
 });
 
 // POST /api/bookstore/books - Add new book
 router.post('/books', (req, res) => {
   const newBook = req.body;
-  
+
   // Basic validation
   if (!newBook.title || !newBook.author || !newBook.isbn) {
     return res.status(400).json({
       success: false,
-      error: 'Missing required fields: title, author, isbn'
+      error: 'Missing required fields: title, author, isbn',
     });
   }
 
@@ -74,7 +74,7 @@ router.post('/books', (req, res) => {
   const bookToAdd = {
     id: Date.now().toString(), // Simple ID generation
     ...newBook,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   books.push(bookToAdd);
@@ -87,7 +87,7 @@ router.post('/books', (req, res) => {
   res.status(201).json({
     success: true,
     data: bookToAdd,
-    message: 'Book created successfully'
+    message: 'Book created successfully',
   });
 });
 
@@ -95,7 +95,7 @@ router.post('/books', (req, res) => {
 router.get('/books/:id', (req, res) => {
   const { id } = req.params;
   const books = readJSONFile(BOOKS_FILE);
-  
+
   if (books === null) {
     return res.status(500).json({ error: 'Failed to read books data' });
   }
@@ -104,14 +104,14 @@ router.get('/books/:id', (req, res) => {
   if (!book) {
     return res.status(404).json({
       success: false,
-      error: 'Book not found'
+      error: 'Book not found',
     });
   }
 
   res.json({
     success: true,
     data: book,
-    message: 'Book fetched successfully'
+    message: 'Book fetched successfully',
   });
 });
 

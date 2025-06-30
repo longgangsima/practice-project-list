@@ -7,28 +7,29 @@
 
 ### **Project Directory Reorganization**
 
-| **Component** | **Before** | **After** | **Impact** |
-|---------------|------------|-----------|------------|
-| **Image Carousel Project** | `src/pages/ImageCarouselIII/` | `src/pages/ImageCarousel/` | Removed Roman numerals for cleaner naming |
-| **Learning Materials** | Scattered `.js` files in BookStore root | `src/pages/BookStore/examples/` | Better separation of educational content |
+| **Component**              | **Before**                              | **After**                       | **Impact**                                |
+| -------------------------- | --------------------------------------- | ------------------------------- | ----------------------------------------- |
+| **Image Carousel Project** | `src/pages/ImageCarouselIII/`           | `src/pages/ImageCarousel/`      | Removed Roman numerals for cleaner naming |
+| **Learning Materials**     | Scattered `.js` files in BookStore root | `src/pages/BookStore/examples/` | Better separation of educational content  |
 
 ### **Route Updates**
 
-| **Route** | **Before** | **After** | **User-Facing Impact** |
-|-----------|------------|-----------|----------------------|
+| **Route**          | **Before**            | **After**         | **User-Facing Impact**         |
+| ------------------ | --------------------- | ----------------- | ------------------------------ |
 | Image Carousel URL | `/image-carousel-iii` | `/image-carousel` | Cleaner, more professional URL |
-| Project Navigation | "Image Carousel III" | "Image Carousel" | Simplified display name |
+| Project Navigation | "Image Carousel III"  | "Image Carousel"  | Simplified display name        |
 
 ## 🔧 Function Naming Standards Applied
 
 ### **Event Handler Improvements**
 
-| **Pattern** | **Before** | **After** | **Rationale** |
-|-------------|------------|-----------|---------------|
+| **Pattern**     | **Before**       | **After**      | **Rationale**                                            |
+| --------------- | ---------------- | -------------- | -------------------------------------------------------- |
 | Form Submission | `handleOnSubmit` | `handleSubmit` | Remove redundant "On" prefix - standard React convention |
-| Input Changes | `handleOnChange` | `handleChange` | Consistency with React community standards |
+| Input Changes   | `handleOnChange` | `handleChange` | Consistency with React community standards               |
 
 **Files Affected:**
+
 - `src/pages/RestaurantSystem/components/FormOrder.tsx`
 - `src/pages/BookStore/components/BookForm.tsx`
 
@@ -36,10 +37,10 @@
 
 ### **State Variables**
 
-| **Component** | **Before** | **After** | **Improvement** |
-|---------------|------------|-----------|-----------------|
-| FormOrder | `formOrder` | `formData` | Clearer intent - it's form data, not an order object |
-| FormOrder | `setFormOrder` | `setFormData` | Consistency with state variable |
+| **Component** | **Before**     | **After**     | **Improvement**                                      |
+| ------------- | -------------- | ------------- | ---------------------------------------------------- |
+| FormOrder     | `formOrder`    | `formData`    | Clearer intent - it's form data, not an order object |
+| FormOrder     | `setFormOrder` | `setFormData` | Consistency with state variable                      |
 
 **Impact:** Better code readability and reduced confusion about data types.
 
@@ -59,23 +60,25 @@ src/pages/BookStore/
 ```
 
 **Benefits:**
+
 - Clear separation between production code and educational materials
 - Easier navigation for developers
 - Better maintainability
 
 ### **Data Access Pattern Improvements**
 
-| **Component** | **Before** | **After** | **Benefit** |
-|---------------|------------|-----------|-------------|
-| FormOrder | `optionData['dish']` | `optionData['base'] \|\| optionData['dish']` | Supports both current and legacy data formats |
+| **Component** | **Before**           | **After**                                    | **Benefit**                                   |
+| ------------- | -------------------- | -------------------------------------------- | --------------------------------------------- |
+| FormOrder     | `optionData['dish']` | `optionData['base'] \|\| optionData['dish']` | Supports both current and legacy data formats |
 
 ## 🎨 App-Wide Updates
 
 ### **Import Statement Updates**
 
 **Automatic updates applied to:**
+
 - `src/App.tsx` - Updated lazy imports and routes
-- `src/constants/projectList.ts` - Updated project names and paths  
+- `src/constants/projectList.ts` - Updated project names and paths
 - `src/pages/RestaurantSystem/index.tsx` - Updated component imports
 - `src/pages/BookStore/index.tsx` - Updated component imports
 
@@ -85,7 +88,7 @@ src/pages/BookStore/
 // Before
 <Route path="/image-carousel-iii" element={<ImageCarouselIII />} />
 
-// After  
+// After
 <Route path="/image-carousel" element={<ImageCarousel />} />
 ```
 
@@ -93,12 +96,12 @@ src/pages/BookStore/
 
 ### **Standards Compliance**
 
-| **Area** | **Standard Applied** | **Example** |
-|----------|---------------------|-------------|
-| Event Handlers | React community convention | `handleSubmit` not `handleOnSubmit` |
-| Folder Structure | React project organization | `components/` not `component/` |
-| URL Design | RESTful naming | `/image-carousel` not `/image-carousel-iii` |
-| Variable Naming | Descriptive naming | `formData` not `formOrder` |
+| **Area**         | **Standard Applied**       | **Example**                                 |
+| ---------------- | -------------------------- | ------------------------------------------- |
+| Event Handlers   | React community convention | `handleSubmit` not `handleOnSubmit`         |
+| Folder Structure | React project organization | `components/` not `component/`              |
+| URL Design       | RESTful naming             | `/image-carousel` not `/image-carousel-iii` |
+| Variable Naming  | Descriptive naming         | `formData` not `formOrder`                  |
 
 ### **Maintainability Improvements**
 
@@ -110,12 +113,14 @@ src/pages/BookStore/
 ## ✅ Validation
 
 ### **Build Verification**
+
 - ✅ All changes tested with `pnpm build`
 - ✅ No breaking changes introduced
 - ✅ All imports automatically updated
 - ✅ TypeScript compilation successful
 
 ### **Functionality Preserved**
+
 - ✅ All React components work as expected
 - ✅ Form submissions and event handling intact
 - ✅ Navigation between pages functional
@@ -124,16 +129,19 @@ src/pages/BookStore/
 ## 🚀 Developer Experience Improvements
 
 ### **Code Navigation**
+
 - Easier to find components with standard folder naming
 - Clearer understanding of variable purposes
 - More intuitive function names
 
 ### **New Developer Onboarding**
+
 - Naming follows industry standards
 - Consistent patterns across the codebase
 - Self-documenting variable and function names
 
 ### **Future Maintenance**
+
 - Easier to extend and modify components
 - Reduced cognitive load when reading code
 - Better alignment with React ecosystem conventions
@@ -143,10 +151,12 @@ src/pages/BookStore/
 ## 📚 References
 
 **React Community Standards:**
+
 - [React Documentation - Event Handling](https://react.dev/learn/responding-to-events)
 - [JavaScript Naming Conventions](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/JavaScript#naming_conventions)
 
 **Project Structure Best Practices:**
+
 - [React Folder Structure](https://react.dev/learn/thinking-in-react#step-1-break-the-ui-into-a-component-hierarchy)
 
 ---

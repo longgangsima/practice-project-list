@@ -8,7 +8,6 @@ Here is the complete list of feature requirements for each part of your **Restau
 
 - Render a list of all orders on the page.
 - For each order, display:
-
   - Unique order ID (shortened UUID)
   - Customer name
   - Base dish
@@ -20,7 +19,6 @@ Here is the complete list of feature requirements for each part of your **Restau
   - Additional notes (or “None”)
 
 - Each order should have:
-
   - **Edit** button (loads order into the form)
   - **Delete** button (removes the order)
 
@@ -31,7 +29,6 @@ Here is the complete list of feature requirements for each part of your **Restau
 ### 🧾 Requirements:
 
 - Form fields include:
-
   1. **Text Input**: `Customer Name`
   2. **Dropdown (Select)**: `Base Dish`
   3. **Dropdown (Select)**: `Protein`
@@ -42,13 +39,11 @@ Here is the complete list of feature requirements for each part of your **Restau
   8. **Textarea**: `Additional Notes`
 
 - On submit:
-
   - Generate a UUID for the order
   - Add it to the orders list
   - Reset the form fields
 
 - Validation:
-
   - Required fields: customer, spice, base, protein, quantity, pickupDate
 
 ---
@@ -59,7 +54,6 @@ Here is the complete list of feature requirements for each part of your **Restau
 
 - Simulate loading `initialOrders` from an external JSON file.
 - Use `useEffect()` to:
-
   - Load data on first render
   - Add UUIDs to each loaded order
   - Store them in React state
@@ -71,13 +65,11 @@ Here is the complete list of feature requirements for each part of your **Restau
 ### 🧾 Requirements:
 
 - Edit:
-
   - Click "Edit" fills the form with order data
   - Form changes button text to "Update Order"
   - After submit, update the order in state
 
 - Delete:
-
   - Click "Delete" removes the order from the list
 
 ---

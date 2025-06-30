@@ -22,7 +22,7 @@ const ORDERS_FILE = path.join(__dirname, 'data', 'orders.json');
 const OPTIONS_FILE = path.join(__dirname, 'data', 'optionData.json');
 
 // Helper function to read JSON file
-const readJSONFile = (filePath) => {
+const readJSONFile = filePath => {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(data);
@@ -54,7 +54,7 @@ app.get('/api/orders', (req, res) => {
   res.json({
     success: true,
     data: orders,
-    message: 'Orders fetched successfully'
+    message: 'Orders fetched successfully',
   });
 });
 
@@ -67,19 +67,19 @@ app.get('/api/options', (req, res) => {
   res.json({
     success: true,
     data: options,
-    message: 'Options fetched successfully'
+    message: 'Options fetched successfully',
   });
 });
 
 // POST /api/orders - Create a new order
 app.post('/api/orders', (req, res) => {
   const newOrder = req.body;
-  
+
   // Basic validation
   if (!newOrder.customer || !newOrder.base || !newOrder.protein || !newOrder.spice) {
     return res.status(400).json({
       success: false,
-      error: 'Missing required fields: customer, base, protein, spice'
+      error: 'Missing required fields: customer, base, protein, spice',
     });
   }
 
@@ -92,7 +92,7 @@ app.post('/api/orders', (req, res) => {
   // Add timestamp and ensure proper structure
   const orderToAdd = {
     ...newOrder,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   // Add new order to array
@@ -107,7 +107,7 @@ app.post('/api/orders', (req, res) => {
   res.status(201).json({
     success: true,
     data: orderToAdd,
-    message: 'Order created successfully'
+    message: 'Order created successfully',
   });
 });
 
@@ -115,7 +115,7 @@ app.post('/api/orders', (req, res) => {
 app.get('/api/orders/:id', (req, res) => {
   const { id } = req.params;
   const orders = readJSONFile(ORDERS_FILE);
-  
+
   if (orders === null) {
     return res.status(500).json({ error: 'Failed to read orders data' });
   }
@@ -124,14 +124,14 @@ app.get('/api/orders/:id', (req, res) => {
   if (!order) {
     return res.status(404).json({
       success: false,
-      error: 'Order not found'
+      error: 'Order not found',
     });
   }
 
   res.json({
     success: true,
     data: order,
-    message: 'Order fetched successfully'
+    message: 'Order fetched successfully',
   });
 });
 
@@ -139,7 +139,7 @@ app.get('/api/orders/:id', (req, res) => {
 app.delete('/api/orders/:id', (req, res) => {
   const { id } = req.params;
   const orders = readJSONFile(ORDERS_FILE);
-  
+
   if (orders === null) {
     return res.status(500).json({ error: 'Failed to read orders data' });
   }
@@ -148,7 +148,7 @@ app.delete('/api/orders/:id', (req, res) => {
   if (orderIndex === -1) {
     return res.status(404).json({
       success: false,
-      error: 'Order not found'
+      error: 'Order not found',
     });
   }
 
@@ -164,7 +164,7 @@ app.delete('/api/orders/:id', (req, res) => {
   res.json({
     success: true,
     data: deletedOrder,
-    message: 'Order deleted successfully'
+    message: 'Order deleted successfully',
   });
 });
 
@@ -173,7 +173,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     success: true,
     message: 'Restaurant API is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   });
 });
 
@@ -181,7 +181,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/*', (req, res) => {
   res.status(404).json({
     success: false,
-    error: 'API endpoint not found'
+    error: 'API endpoint not found',
   });
 });
 

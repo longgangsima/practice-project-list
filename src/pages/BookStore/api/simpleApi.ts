@@ -85,8 +85,14 @@ export const fetchBooksWithAuthors = async () => {
         const response = await fetchAuthorById(authorId);
         return { success: true, authorId, data: response.data };
       } catch (error) {
-        console.log(`⚠️ Author ${authorId} failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
-        return { success: false, authorId, error: error instanceof Error ? error.message : 'Unknown error' };
+        console.log(
+          `⚠️ Author ${authorId} failed: ${error instanceof Error ? error.message : 'Unknown error'}`
+        );
+        return {
+          success: false,
+          authorId,
+          error: error instanceof Error ? error.message : 'Unknown error',
+        };
       }
     });
     console.log('authorPromises: ', authorPromises);
@@ -94,12 +100,18 @@ export const fetchBooksWithAuthors = async () => {
     const authorResults = await Promise.all(authorPromises);
 
     // 第4步: 分离成功和失败的作者
-    const successfulAuthors = authorResults.filter(result => result.success).map(result => result.data) as Author[];
+    const successfulAuthors = authorResults
+      .filter(result => result.success)
+      .map(result => result.data) as Author[];
 
-    const failedAuthorIds = authorResults.filter(result => !result.success).map(result => result.authorId);
+    const failedAuthorIds = authorResults
+      .filter(result => !result.success)
+      .map(result => result.authorId);
 
     console.log(`✅ Successfully fetched ${successfulAuthors.length} authors`);
-    console.log(`❌ Failed to fetch ${failedAuthorIds.length} authors: ${failedAuthorIds.join(', ')}`);
+    console.log(
+      `❌ Failed to fetch ${failedAuthorIds.length} authors: ${failedAuthorIds.join(', ')}`
+    );
 
     // 第5步: 合并数据，过滤掉404的书籍
     console.log('🔄 Merging books and authors data...');
@@ -122,18 +134,21 @@ export const fetchBooksWithAuthors = async () => {
 
     // 第7步: 按作者姓氏分组
     console.log('📊 Grouping books by author last name...');
-    const grouped = booksWithAuthors.reduce((acc, book) => {
-      // 获取作者姓氏的首字母
-      const lastName = book.author.name.split(' ').pop() || '';
-      const firstLetter = lastName.charAt(0).toUpperCase();
+    const grouped = booksWithAuthors.reduce(
+      (acc, book) => {
+        // 获取作者姓氏的首字母
+        const lastName = book.author.name.split(' ').pop() || '';
+        const firstLetter = lastName.charAt(0).toUpperCase();
 
-      if (!acc[firstLetter]) {
-        acc[firstLetter] = [];
-      }
+        if (!acc[firstLetter]) {
+          acc[firstLetter] = [];
+        }
 
-      acc[firstLetter].push(book);
-      return acc;
-    }, {} as Record<string, BookWithAuthor[]>);
+        acc[firstLetter].push(book);
+        return acc;
+      },
+      {} as Record<string, BookWithAuthor[]>
+    );
 
     // 第8步: 组内按姓氏排序
     Object.keys(grouped).forEach(letter => {
@@ -144,7 +159,9 @@ export const fetchBooksWithAuthors = async () => {
       });
     });
 
-    console.log(`✅ Complete process finished: ${booksWithAuthors.length} books in ${Object.keys(grouped).length} groups`);
+    console.log(
+      `✅ Complete process finished: ${booksWithAuthors.length} books in ${Object.keys(grouped).length} groups`
+    );
 
     return {
       success: true,

@@ -80,10 +80,18 @@ function updateNestedProperty(obj, path, updateFn) {
 // Usage:
 const addBookWithHelper = (prevState, newBook) => {
   // Add book to array
-  const withNewBook = updateNestedProperty(prevState, 'shelves.fiction.categories.scifi.books', books => [...books, newBook]);
+  const withNewBook = updateNestedProperty(
+    prevState,
+    'shelves.fiction.categories.scifi.books',
+    books => [...books, newBook]
+  );
 
   // Update count
-  return updateNestedProperty(withNewBook, 'shelves.fiction.categories.scifi.metadata.count', count => count + 1);
+  return updateNestedProperty(
+    withNewBook,
+    'shelves.fiction.categories.scifi.metadata.count',
+    count => count + 1
+  );
 };
 ```
 

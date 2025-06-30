@@ -5,9 +5,11 @@ Testing strategies, setup instructions, and best practices for React application
 ## 📋 Available Guides
 
 ### Setup & Configuration
+
 - **[Test Setup Guide](./test-setup-guide.md)** - Initial testing environment setup
 
-### Testing Strategies  
+### Testing Strategies
+
 - **[Manual Testing Guide](./DisplayOrders.manual-test.md)** - Manual testing procedures for components
 
 ---
@@ -17,18 +19,20 @@ Testing strategies, setup instructions, and best practices for React application
 Our testing approach focuses on:
 
 1. **User-Centric Testing** - Test what users actually do
-2. **Reliability** - Tests should be stable and predictable  
+2. **Reliability** - Tests should be stable and predictable
 3. **Maintainability** - Easy to update as code changes
 4. **Speed** - Fast feedback during development
 
 ## 🛠️ Testing Stack
 
 ### Unit Testing
+
 - **Jest** - Test runner and assertion library
 - **Testing Library** - React component testing utilities
 - **@testing-library/user-event** - User interaction simulation
 
 ### Manual Testing
+
 - **Test Scenarios** - Defined user workflows
 - **Edge Cases** - Error conditions and boundary testing
 - **Cross-browser** - Compatibility verification
@@ -36,28 +40,30 @@ Our testing approach focuses on:
 ## 📖 Testing Patterns
 
 ### Component Testing
+
 ```javascript
 // Test user interactions, not implementation
 test('user can submit order form', async () => {
   render(<OrderForm />);
-  
+
   await user.type(screen.getByLabelText(/customer name/i), 'John Doe');
   await user.click(screen.getByRole('button', { name: /submit/i }));
-  
+
   expect(screen.getByText(/order submitted/i)).toBeInTheDocument();
 });
 ```
 
 ### API Testing
+
 ```javascript
 // Mock external dependencies
 test('displays orders from API', async () => {
   mockFetch.mockResolvedValueOnce({
-    json: async () => [{ id: '1', customer: 'John' }]
+    json: async () => [{ id: '1', customer: 'John' }],
   });
-  
+
   render(<OrderList />);
-  
+
   await waitFor(() => {
     expect(screen.getByText('John')).toBeInTheDocument();
   });

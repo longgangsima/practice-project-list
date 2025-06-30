@@ -7,54 +7,45 @@ When you complete your implementation, verify these requirements:
 ### ✅ **BASIC DISPLAY REQUIREMENTS (60 points)**
 
 1. **[10 pts] Render All Orders**
-
    - [ ] All 3 orders from `orders.json` are displayed
    - [ ] Each order appears as a separate card/item
 
 2. **[5 pts] Order ID Display**
-
    - [ ] Each order shows a unique UUID
    - [ ] ID should be shortened (first 8 characters)
    - [ ] Format: `3c98f5f1...`, `fc82dc7b...`, `b1f1a770...`
 
 3. **[5 pts] Customer Name**
-
    - [ ] "Alice" is displayed
    - [ ] "Bob" is displayed
    - [ ] "Clara" is displayed
 
 4. **[5 pts] Base Dish Display**
-
    - [ ] Shows "Salad Bowl" for Alice
    - [ ] Shows "Grain Bowl" for Bob
    - [ ] Shows "Noodle Bowl" for Clara
 
 5. **[5 pts] Protein Display**
-
    - [ ] Shows "Grilled Chicken" for Alice
    - [ ] Shows "Tofu" for Bob
    - [ ] Shows "Steak" for Clara
 
 6. **[5 pts] Spice Level**
-
    - [ ] Shows "Mild" for Alice
    - [ ] Shows "Medium" for Bob
    - [ ] Shows "Hot" for Clara
 
 7. **[10 pts] Dressings Display**
-
    - [ ] Alice: Shows "Balsamic Vinaigrette, Ranch" (or similar format)
    - [ ] Bob: Shows "None" (empty array)
    - [ ] Clara: Shows "Caesar"
 
 8. **[5 pts] Quantity/Servings**
-
    - [ ] Alice: Shows "2"
    - [ ] Bob: Shows "1"
    - [ ] Clara: Shows "3"
 
 9. **[5 pts] Pickup Date**
-
    - [ ] Alice: Shows "2025-07-01"
    - [ ] Bob: Shows "2025-07-02"
    - [ ] Clara: Shows "2025-07-03"
@@ -67,13 +58,11 @@ When you complete your implementation, verify these requirements:
 ### ✅ **FUNCTIONALITY REQUIREMENTS (30 points)**
 
 11. **[10 pts] Edit Button**
-
     - [ ] Each order has an "Edit" button
     - [ ] Clicking Edit loads data into form
     - [ ] Form button changes to "Update Order"
 
 12. **[10 pts] Delete Button**
-
     - [ ] Each order has a "Delete" button
     - [ ] Clicking Delete removes order from list
     - [ ] Other orders remain visible
@@ -86,12 +75,10 @@ When you complete your implementation, verify these requirements:
 ### ✅ **EDGE CASES (10 points)**
 
 14. **[3 pts] Empty Dressings**
-
     - [ ] Bob's empty dressings array shows "None"
     - [ ] No error/crash when dressings array is empty
 
 15. **[3 pts] Empty Comments**
-
     - [ ] Bob's empty comments show "None"
     - [ ] No error/crash when comments are empty
 

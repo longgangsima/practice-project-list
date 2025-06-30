@@ -8,7 +8,7 @@ const ORDERS_FILE = path.join(__dirname, '../data/restaurant/orders.json');
 const OPTIONS_FILE = path.join(__dirname, '../data/restaurant/optionData.json');
 
 // Helper functions
-const readJSONFile = (filePath) => {
+const readJSONFile = filePath => {
   try {
     const data = fs.readFileSync(filePath, 'utf8');
     return JSON.parse(data);
@@ -37,7 +37,7 @@ router.get('/orders', (req, res) => {
   res.json({
     success: true,
     data: orders,
-    message: 'Orders fetched successfully'
+    message: 'Orders fetched successfully',
   });
 });
 
@@ -50,19 +50,19 @@ router.get('/options', (req, res) => {
   res.json({
     success: true,
     data: options,
-    message: 'Options fetched successfully'
+    message: 'Options fetched successfully',
   });
 });
 
 // POST /api/restaurant/orders - Create new order
 router.post('/orders', (req, res) => {
   const newOrder = req.body;
-  
+
   // Basic validation
   if (!newOrder.customer || !newOrder.base || !newOrder.protein || !newOrder.spice) {
     return res.status(400).json({
       success: false,
-      error: 'Missing required fields: customer, base, protein, spice'
+      error: 'Missing required fields: customer, base, protein, spice',
     });
   }
 
@@ -73,7 +73,7 @@ router.post('/orders', (req, res) => {
 
   const orderToAdd = {
     ...newOrder,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   orders.push(orderToAdd);
@@ -86,7 +86,7 @@ router.post('/orders', (req, res) => {
   res.status(201).json({
     success: true,
     data: orderToAdd,
-    message: 'Order created successfully'
+    message: 'Order created successfully',
   });
 });
 
@@ -94,7 +94,7 @@ router.post('/orders', (req, res) => {
 router.get('/orders/:id', (req, res) => {
   const { id } = req.params;
   const orders = readJSONFile(ORDERS_FILE);
-  
+
   if (orders === null) {
     return res.status(500).json({ error: 'Failed to read orders data' });
   }
@@ -103,14 +103,14 @@ router.get('/orders/:id', (req, res) => {
   if (!order) {
     return res.status(404).json({
       success: false,
-      error: 'Order not found'
+      error: 'Order not found',
     });
   }
 
   res.json({
     success: true,
     data: order,
-    message: 'Order fetched successfully'
+    message: 'Order fetched successfully',
   });
 });
 
@@ -118,7 +118,7 @@ router.get('/orders/:id', (req, res) => {
 router.delete('/orders/:id', (req, res) => {
   const { id } = req.params;
   const orders = readJSONFile(ORDERS_FILE);
-  
+
   if (orders === null) {
     return res.status(500).json({ error: 'Failed to read orders data' });
   }
@@ -127,7 +127,7 @@ router.delete('/orders/:id', (req, res) => {
   if (orderIndex === -1) {
     return res.status(404).json({
       success: false,
-      error: 'Order not found'
+      error: 'Order not found',
     });
   }
 
@@ -141,7 +141,7 @@ router.delete('/orders/:id', (req, res) => {
   res.json({
     success: true,
     data: deletedOrder,
-    message: 'Order deleted successfully'
+    message: 'Order deleted successfully',
   });
 });
 

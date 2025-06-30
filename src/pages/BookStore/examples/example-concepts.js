@@ -44,13 +44,13 @@ const original = {
 const copy1 = { ...original };
 
 // 方法2: Object.assign()
-const copy2 = Object.assign({}, original);
+const _copy2 = Object.assign({}, original);
 
 // 方法3: 数组的浅拷贝
 const arrOriginal = [1, 2, [3, 4], { name: 'test' }];
-const arrCopy1 = [...arrOriginal]; // 展开运算符
-const arrCopy2 = Array.from(arrOriginal); // Array.from()
-const arrCopy3 = arrOriginal.slice(); // slice()
+const _arrCopy1 = [...arrOriginal]; // 展开运算符
+const _arrCopy2 = Array.from(arrOriginal); // Array.from()
+const _arrCopy3 = arrOriginal.slice(); // slice()
 
 console.log('原始对象:', original);
 console.log('拷贝对象:', copy1);
@@ -104,7 +104,7 @@ function deepClone(obj) {
 
   const cloned = {};
   for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       cloned[key] = deepClone(obj[key]);
     }
   }
@@ -157,7 +157,7 @@ const newState = { ...userState };
 newState.profile.name = '新用户'; // 影响原对象！
 
 // ✅ 正确: 需要拷贝嵌套对象
-const correctState = {
+const _correctState = {
   ...userState,
   profile: { ...userState.profile, name: '新用户' },
 };

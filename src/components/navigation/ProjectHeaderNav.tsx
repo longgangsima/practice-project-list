@@ -23,7 +23,7 @@ export default function ProjectHeaderNav({ currentPath, className = '' }: Projec
   const hasMultipleProjects = projectList.length > 1;
   const prevIndex = (currentIndex - 1 + projectList.length) % projectList.length;
   const nextIndex = (currentIndex + 1) % projectList.length;
-  
+
   const prev = hasMultipleProjects ? projectList[prevIndex] : null;
   const next = hasMultipleProjects ? projectList[nextIndex] : null;
   const current = projectList[currentIndex];
@@ -33,20 +33,20 @@ export default function ProjectHeaderNav({ currentPath, className = '' }: Projec
       {hasMultipleProjects ? (
         <>
           {prev && (
-            <Link 
-              to={prev.path} 
+            <Link
+              to={prev.path}
               className="nav-link nav-link--prev"
               aria-label={`Go to previous project: ${prev.name}`}
             >
               ← {prev.name}
             </Link>
           )}
-          
+
           <h1 className="project-title">{current.name}</h1>
-          
+
           {next && (
-            <Link 
-              to={next.path} 
+            <Link
+              to={next.path}
               className="nav-link nav-link--next"
               aria-label={`Go to next project: ${next.name}`}
             >

@@ -10,29 +10,23 @@ type ProjectLayoutProps = {
   className?: string;
 };
 
-export default function ProjectLayout({ 
-  currentPath, 
-  children, 
+export default function ProjectLayout({
+  currentPath,
+  children,
   showHomeLink = true,
-  className = ''
+  className = '',
 }: ProjectLayoutProps) {
   return (
     <div className={`project-page-wrapper ${className}`}>
       {showHomeLink && (
-        <Link
-          to="/"
-          className="home-link"
-          aria-label="Go back to home"
-        >
+        <Link to="/" className="home-link" aria-label="Go back to home">
           ⬅ Home
         </Link>
       )}
 
       <ProjectHeaderNav currentPath={currentPath} />
 
-      <main className="project-content">
-        {children}
-      </main>
+      <main className="project-content">{children}</main>
     </div>
   );
 }

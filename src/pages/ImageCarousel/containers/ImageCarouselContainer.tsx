@@ -4,7 +4,11 @@ function clsx(...classnames: Array<any>) {
   return classnames.filter(Boolean).join(' ');
 }
 
-function shouldTransitionToLeftDirection(currIndex: number, nextIndex: number, totalImages: number) {
+function shouldTransitionToLeftDirection(
+  currIndex: number,
+  nextIndex: number,
+  totalImages: number
+) {
   // Last going to first.
   if (currIndex === totalImages - 1 && nextIndex === 0) {
     return true;
@@ -85,7 +89,10 @@ export default function ImageCarousel({
         {images.map(({ alt, src }, index) => (
           <button
             aria-label={`Navigate to ${alt}`}
-            className={clsx('image-carousel__pages__button', index === currIndex && 'image-carousel__pages__button--active')}
+            className={clsx(
+              'image-carousel__pages__button',
+              index === currIndex && 'image-carousel__pages__button--active'
+            )}
             disabled={isTransitioning}
             key={src}
             onClick={() => {

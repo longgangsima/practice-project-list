@@ -1,7 +1,7 @@
 // Layout Components
 export { default as ProjectLayout } from './layout/ProjectLayout';
 
-// Navigation Components  
+// Navigation Components
 export { default as ProjectHeaderNav } from './navigation/ProjectHeaderNav';
 
 // UI Components

@@ -242,7 +242,14 @@ export default function BookStore() {
       })}
 
       {/* Add Book Form */}
-      <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#f8f9fa', borderRadius: '8px' }}>
+      <div
+        style={{
+          marginTop: '2rem',
+          padding: '1rem',
+          backgroundColor: '#f8f9fa',
+          borderRadius: '8px',
+        }}
+      >
         <h3>📝 Add New Book</h3>
         <BookForm onAdd={handleAddBook} />
       </div>
