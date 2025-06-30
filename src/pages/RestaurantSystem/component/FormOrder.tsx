@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { v4 as generateId } from 'uuid';
 
 /*
   IMPORTANT: Understanding Shallow Copy vs Deep Copy
@@ -40,13 +41,53 @@ const FormOrder = ({ onAdd, optionData }) => {
     base: '',
     protein: '',
     dressings: [] as string[], // ✅ Fix: Explicit typing
-    quantity: 0,
-    pickupDate: new Date(),
+    quantity: 1, // ✅ Default to 1 instead of 0
+    pickupDate: new Date().toISOString().split('T')[0], // ✅ Use string format for date input
     comments: '',
     address: '',
   });
 
-  const handleOnSubmit = () => {};
+  const handleOnSubmit = e => {
+    e.preventDefault();
+
+    // ✅ Enhanced validation for all required fields
+    const requiredFields = ['customer', 'base', 'protein', 'spice', 'address'];
+    const missingFields = requiredFields.filter(field => !formOrder[field]);
+    
+    if (missingFields.length > 0 || formOrder.quantity < 1) {
+      alert(`Please fill in all required fields: ${missingFields.join(', ')}${formOrder.quantity < 1 ? ', quantity must be at least 1' : ''}`);
+      return;
+    }
+
+    try {
+      // ✅ Create proper order object with id
+      const newOrder = {
+        id: generateId(),
+        ...formOrder,
+      };
+
+      // ✅ Call onAdd with error handling
+      onAdd(newOrder);
+
+      // ✅ Reset form after successful submission
+      setFormOrder({
+        customer: '',
+        spice: '',
+        base: '',
+        protein: '',
+        dressings: [] as string[],
+        quantity: 1,
+        pickupDate: new Date().toISOString().split('T')[0],
+        comments: '',
+        address: '',
+      });
+      
+      console.log('Order created successfully:', newOrder);
+    } catch (error) {
+      console.error('Error creating order:', error);
+      alert('Failed to create order. Please try again.');
+    }
+  };
 
   const handleOnChange = e => {
     const name = e.target.name;
@@ -83,7 +124,7 @@ const FormOrder = ({ onAdd, optionData }) => {
   };
 
   return (
-    <form className="form-order">
+    <form className="form-order" onSubmit={handleOnSubmit}>
       <label>
         {'Customer: '}
         <input

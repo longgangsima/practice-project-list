@@ -10,7 +10,11 @@ export default function RestaurantSystem() {
   const [orderList, setOrderList] = useState<Order[]>(orders);
 
   const handleOrderCreation = (order: Order) => {
-    console.log('first: ', order);
+    setOrderList(preOrderList => {
+      const newOrder = [...preOrderList];
+      newOrder.push(order);
+      return newOrder;
+    });
   };
 
   return (

@@ -4,11 +4,19 @@ export default function OrderCard({ order }: OrderCardProps) {
   return (
     <div className="order-detail">
       {Object.entries(order).map(([key, value]) => {
-        // forget to add String and why we need string?
-        const orderValue = Array.isArray(value) ? value.join(', ') : String(value);
+        // Convert value to string - needed because values can be numbers, dates, booleans
+        // React expects strings for display, and String() handles all types safely
+        let orderValue: string;
+        if (Array.isArray(value)) {
+          orderValue = value.join(', ');
+        } else if (value instanceof Date) {
+          orderValue = value.toLocaleDateString(); // Better date formatting
+        } else {
+          orderValue = String(value);
+        }
 
         if (key === 'id') return null;
-        if (orderValue === undefined || orderValue === null) return null;
+        if (orderValue === undefined || orderValue === null || orderValue === '') return null;
 
         return (
           <div key={`order-${key}`} className={`order-${key}`}>
