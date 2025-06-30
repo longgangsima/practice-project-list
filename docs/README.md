@@ -14,27 +14,32 @@ react-app/
 ## 📖 Documentation Index
 
 ### 🎯 [Project Guides](./projects/)
+
 - **[BookStore](../src/pages/BookStore/README.md)** - Mock API data fetching and processing
 - **[Restaurant System](../src/pages/RestaurantSystem/README.md)** - Order management system
 - **Image Carousel III** - Interactive image carousel
 - **Trading Chart** - Financial data visualization
 
 ### 🧠 [Learning Guides](./guides/)
+
 - **[React Concepts](./guides/react-concepts/)** - Core React concepts and patterns
 - **[Testing](./guides/testing/)** - Testing strategies and setup guides
 
 ### 🔧 [Backend Documentation](./backend/)
+
 - **[API Reference](./backend/)** - Backend API setup and endpoints
 
 ## 🚀 Quick Start
 
 1. **Frontend Development:**
+
    ```bash
    pnpm install
    pnpm dev
    ```
 
 2. **Backend Development:**
+
    ```bash
    cd backend
    npm install
@@ -42,10 +47,11 @@ react-app/
    ```
 
 3. **Full Stack Development:**
+
    ```bash
    # Terminal 1: Start backend
    cd backend && npm start
-   
+
    # Terminal 2: Start frontend
    pnpm dev
    ```
@@ -53,6 +59,7 @@ react-app/
 ## 🏛️ Architecture
 
 This is a **monorepo** containing:
+
 - Multiple React projects in a single frontend app
 - Shared components and utilities
 - Unified backend API serving multiple projects
@@ -60,12 +67,12 @@ This is a **monorepo** containing:
 
 ## 📱 Available Projects
 
-| Project | Path | Description |
-|---------|------|-------------|
-| Home | `/` | Project listing and navigation |
-| BookStore | `/book-store` | API data fetching patterns |
-| Restaurant System | `/restaurant-system` | CRUD operations and forms |
-| Image Carousel III | `/image-carousel-iii` | Interactive UI components |
+| Project            | Path                  | Description                    |
+| ------------------ | --------------------- | ------------------------------ |
+| Home               | `/`                   | Project listing and navigation |
+| BookStore          | `/book-store`         | API data fetching patterns     |
+| Restaurant System  | `/restaurant-system`  | CRUD operations and forms      |
+| Image Carousel III | `/image-carousel-iii` | Interactive UI components      |
 
 ## 🎓 Learning Objectives
 

@@ -5,7 +5,7 @@ A simple Node.js Express server that provides REST API endpoints for the Restaur
 ## Features
 
 - ✅ Fetch all orders
-- ✅ Create new orders  
+- ✅ Create new orders
 - ✅ Get specific order by ID
 - ✅ Delete orders
 - ✅ Fetch menu options (dishes, proteins, spices, dressings)
@@ -27,20 +27,24 @@ The server will run on `http://localhost:3001`
 ## API Endpoints
 
 ### Orders
+
 - `GET /api/orders` - Get all orders
 - `POST /api/orders` - Create a new order
 - `GET /api/orders/:id` - Get order by ID
 - `DELETE /api/orders/:id` - Delete order by ID
 
 ### Options
+
 - `GET /api/options` - Get menu options (dishes, proteins, spices, dressings)
 
 ### Health Check
+
 - `GET /api/health` - Server health check
 
 ## Example Usage
 
 ### Create a new order:
+
 ```bash
 curl -X POST http://localhost:3001/api/orders \
   -H "Content-Type: application/json" \
@@ -59,11 +63,13 @@ curl -X POST http://localhost:3001/api/orders \
 ```
 
 ### Get all orders:
+
 ```bash
 curl http://localhost:3001/api/orders
 ```
 
 ### Get menu options:
+
 ```bash
 curl http://localhost:3001/api/options
 ```
@@ -88,6 +94,7 @@ All API responses follow this format:
 ```
 
 Error responses:
+
 ```json
 {
   "success": false,

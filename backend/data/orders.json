@@ -5,10 +5,7 @@
     "spice": "Mild",
     "base": "Salad Bowl",
     "protein": "Grilled Chicken",
-    "dressings": [
-      "Balsamic Vinaigrette",
-      "Ranch"
-    ],
+    "dressings": ["Balsamic Vinaigrette", "Ranch"],
     "quantity": 2,
     "pickupDate": "2025-07-01",
     "comments": "No onions please",
@@ -32,9 +29,7 @@
     "spice": "Hot",
     "base": "Noodle Bowl",
     "protein": "Steak",
-    "dressings": [
-      "Caesar"
-    ],
+    "dressings": ["Caesar"],
     "quantity": 3,
     "pickupDate": "2025-07-03",
     "comments": "Extra spicy and gluten-free",
@@ -46,9 +41,7 @@
     "spice": "Medium",
     "base": "Grain Bowl",
     "protein": "Grilled Chicken",
-    "dressings": [
-      "Ranch"
-    ],
+    "dressings": ["Ranch"],
     "quantity": 1,
     "pickupDate": "2025-07-01",
     "comments": "Test order",

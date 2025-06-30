@@ -5,7 +5,9 @@ This section contains educational materials and best practices for React develop
 ## 📚 Available Guides
 
 ### [React Concepts](./react-concepts/)
+
 Core React patterns and concepts:
+
 - Array methods and data manipulation
 - State updates and immutability
 - Nested state management
@@ -13,7 +15,9 @@ Core React patterns and concepts:
 - Performance considerations
 
 ### [Testing](./testing/)
+
 Testing strategies and setup:
+
 - Unit testing setup
 - Manual testing procedures
 - Test-driven development
@@ -39,6 +43,7 @@ For beginners, we recommend following this order:
 ## 🤝 Contributing
 
 When adding new guides:
+
 1. Follow the established format and structure
 2. Include practical examples and code snippets
 3. Add cross-references to related concepts
