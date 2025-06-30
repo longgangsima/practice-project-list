@@ -4,50 +4,101 @@ A modern monorepo containing multiple React projects demonstrating advanced conc
 
 ## 🚀 Quick Start
 
-### Frontend Development
+### Development (All Services)
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev  # Starts both frontend and backend concurrently
 ```
 
-### Backend Development
+### Frontend Only
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Backend Only
 
 ```bash
 cd backend
 npm install
-npm start
-```
-
-### Full Stack Development
-
-```bash
-# Terminal 1: Start backend
-cd backend && npm start
-
-# Terminal 2: Start frontend
-pnpm dev
+npm run dev
 ```
 
 ### Build for Production
 
 ```bash
-pnpm build       # Creates optimized production build
-pnpm preview     # Preview production build locally
+npm run build       # Builds frontend for production
+npm run build:frontend  # Alternative command
+cd backend && npm run build  # Backend build (if applicable)
+```
+
+## 🛠️ Development Commands
+
+### Root Level Commands (Monorepo)
+
+```bash
+npm run dev                 # Start both frontend and backend
+npm run build              # Build frontend for production
+npm run test               # Run all tests
+npm run lint               # Lint both frontend and backend
+npm run format             # Format all code with Prettier
+npm run install:all        # Install dependencies for all packages
+npm run clean              # Clean all node_modules and build files
+```
+
+### Frontend Commands
+
+```bash
+cd frontend
+npm run dev                # Start development server
+npm run build              # Build for production
+npm run preview            # Preview production build
+npm run lint               # ESLint check
+npm run lint:style         # Stylelint with auto-fix
+npm run lint:style-check   # Stylelint check only
+npm run format             # Format with Prettier
+npm run format:check       # Check Prettier formatting
+```
+
+### Backend Commands
+
+```bash
+cd backend
+npm run dev                # Start development server
+npm run start              # Start production server
+npm run lint               # ESLint check
+npm run format             # Format with Prettier
 ```
 
 ## 📁 Project Structure
 
 ```
-react-app/
-├── src/                          # Frontend React applications
-│   ├── components/               # Shared UI components (layout, navigation, ui)
-│   ├── constants/                # Project configuration and constants
-│   ├── pages/                    # Individual project pages
-│   │   ├── BookStore/            # Book management with API integration
-│   │   ├── ImageCarousel/        # Interactive image carousel component
-│   │   ├── RestaurantSystem/     # Order management system
-│   │   └── Home/                 # Landing page
+react-app/                        # Monorepo root
+├── frontend/                     # Frontend React application
+│   ├── src/                      # React source code
+│   │   ├── components/           # Shared UI components (layout, navigation, ui)
+│   │   ├── constants/            # Project configuration and constants
+│   │   ├── pages/                # Individual project pages
+│   │   │   ├── BookStore/        # Book management with API integration
+│   │   │   ├── ImageCarousel/    # Interactive image carousel component
+│   │   │   ├── RestaurantSystem/ # Order management system
+│   │   │   └── Home/             # Landing page
+│   │   └── ...                   # Other React files
+│   ├── public/                   # Static assets
+│   ├── package.json              # Frontend dependencies
+│   └── vite.config.js            # Vite configuration
+├── backend/                      # Backend Node.js API
+│   ├── data/                     # JSON data storage
+│   ├── routes/                   # Express route handlers
+│   ├── package.json              # Backend dependencies
+│   └── server.js                 # Express server
+├── docs/                         # Project documentation
+├── package.json                  # Root monorepo configuration
+└── README.md                     # This file
+```
 │   └── assets/                   # Static assets and resources
 ├── backend/                      # Node.js/Express API server
 │   ├── data/                     # JSON data storage
@@ -101,8 +152,8 @@ react-app/
 ### Quick Links
 
 - **[Project Documentation](./docs/projects/)** - Project index and overview
-  - **[BookStore](./src/pages/BookStore/README.md)** - In-project documentation
-  - **[Restaurant System](./src/pages/RestaurantSystem/README.md)** - In-project documentation
+  - **[BookStore](./frontend/src/pages/BookStore/README.md)** - In-project documentation
+  - **[Restaurant System](./frontend/src/pages/RestaurantSystem/README.md)** - In-project documentation
 - **[React Concepts](./docs/guides/react-concepts/)** - Learning materials and patterns
 - **[Testing Guides](./docs/guides/testing/)** - Testing strategies and setup
 - **[Backend API](./docs/backend/)** - API documentation and setup
@@ -132,10 +183,13 @@ react-app/
 
 ### Development Tools
 
-- **pnpm** for package management
-- **ESLint** for code quality
+- **npm** for package management (monorepo with workspaces)
+- **ESLint** for code quality (both frontend & backend)
+- **Stylelint** for CSS code quality
+- **Prettier** for code formatting
 - **TypeScript** for type safety
 - **Vite** for fast development and optimized builds
+- **Concurrently** for running multiple services
 
 ## ⚡ Performance Features
 
