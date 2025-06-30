@@ -4,6 +4,7 @@ export default function OrderCard({ order }: OrderCardProps) {
   return (
     <div className="order-detail">
       {Object.entries(order).map(([key, value]) => {
+        // forget to add String and why we need string?
         const orderValue = Array.isArray(value) ? value.join(', ') : String(value);
 
         if (key === 'id') return null;

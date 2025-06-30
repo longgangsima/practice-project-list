@@ -33,9 +33,9 @@ Here is the complete list of feature requirements for each part of your **Restau
 - Form fields include:
 
   1. **Text Input**: `Customer Name`
-  2. **Radio Buttons**: `Spice Level` (Mild, Medium, Hot)
-  3. **Dropdown (Select)**: `Base Dish`
-  4. **Dropdown (Select)**: `Protein`
+  2. **Dropdown (Select)**: `Base Dish`
+  3. **Dropdown (Select)**: `Protein`
+  4. **Radio Buttons**: `Spice Level` (Mild, Medium, Hot)
   5. **Checkboxes**: `Dressings` (multi-select)
   6. **Number Input**: `Quantity` (min 1)
   7. **Date Input**: `Pickup Date`
