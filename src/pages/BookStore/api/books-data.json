@@ -1,0 +1,79 @@
+[
+  {
+    "id": "b1",
+    "title": "A Tale of Two Cities",
+    "authorId": "a1",
+    "year": 1859,
+    "genre": "Historical Fiction"
+  },
+  {
+    "id": "b2",
+    "title": "Animal Farm",
+    "authorId": "a2",
+    "year": 1945,
+    "genre": "Political Satire"
+  },
+  {
+    "id": "b3",
+    "title": "Brave New World",
+    "authorId": "a3",
+    "year": 1932,
+    "genre": "Science Fiction"
+  },
+  {
+    "id": "b4",
+    "title": "Crime and Punishment",
+    "authorId": "a4",
+    "year": 1866,
+    "genre": "Psychological Fiction"
+  },
+  {
+    "id": "b5",
+    "title": "Alice's Adventures in Wonderland",
+    "authorId": "a5",
+    "year": 1865,
+    "genre": "Fantasy"
+  },
+  {
+    "id": "b6",
+    "title": "To Kill a Mockingbird",
+    "authorId": "a6",
+    "year": 1960,
+    "genre": "Drama"
+  },
+  {
+    "id": "b7",
+    "title": "The Great Gatsby",
+    "authorId": "a7",
+    "year": 1925,
+    "genre": "Classic Literature"
+  },
+  {
+    "id": "b8",
+    "title": "Pride and Prejudice",
+    "authorId": "a8",
+    "year": 1813,
+    "genre": "Romance"
+  },
+  {
+    "id": "b9",
+    "title": "One Hundred Years of Solitude",
+    "authorId": "a9",
+    "year": 1967,
+    "genre": "Magical Realism"
+  },
+  {
+    "id": "b10",
+    "title": "Moby Dick",
+    "authorId": "a404",
+    "year": 1851,
+    "genre": "Adventure"
+  },
+  {
+    "id": "b11",
+    "title": "The Catcher in the Rye",
+    "authorId": "a404_2",
+    "year": 1951,
+    "genre": "Coming-of-age"
+  }
+]

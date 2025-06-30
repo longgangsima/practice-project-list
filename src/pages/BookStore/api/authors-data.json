@@ -1,0 +1,56 @@
+[
+  {
+    "id": "a1",
+    "name": "Charles Dickens",
+    "nationality": "British",
+    "birthYear": 1812
+  },
+  {
+    "id": "a2",
+    "name": "George Orwell",
+    "nationality": "British",
+    "birthYear": 1903
+  },
+  {
+    "id": "a3",
+    "name": "Aldous Huxley",
+    "nationality": "British",
+    "birthYear": 1894
+  },
+  {
+    "id": "a4",
+    "name": "Fyodor Dostoevsky",
+    "nationality": "Russian",
+    "birthYear": 1821
+  },
+  {
+    "id": "a5",
+    "name": "Lewis Carroll",
+    "nationality": "British",
+    "birthYear": 1832
+  },
+  {
+    "id": "a6",
+    "name": "Harper Lee",
+    "nationality": "American",
+    "birthYear": 1926
+  },
+  {
+    "id": "a7",
+    "name": "F. Scott Fitzgerald",
+    "nationality": "American",
+    "birthYear": 1896
+  },
+  {
+    "id": "a8",
+    "name": "Jane Austen",
+    "nationality": "British",
+    "birthYear": 1775
+  },
+  {
+    "id": "a9",
+    "name": "Gabriel García Márquez",
+    "nationality": "Colombian",
+    "birthYear": 1927
+  }
+]
