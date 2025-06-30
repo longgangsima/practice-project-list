@@ -1,0 +1,163 @@
+/* Basic styling for Restaurant Order System */
+
+.order-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-list h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Form Order Styling */
+.create-order {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+}
+
+.form-order {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-order label {
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-order input,
+.form-order select,
+.form-order textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-top: 4px;
+  box-sizing: border-box;
+}
+
+.form-order input:focus,
+.form-order select:focus,
+.form-order textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-order textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.form-order fieldset {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.form-order legend {
+  font-weight: 600;
+  color: #333;
+  padding: 0 8px;
+}
+
+.form-order fieldset label {
+  display: inline-block;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  font-weight: normal;
+}
+
+.form-order input[type="radio"],
+.form-order input[type="checkbox"] {
+  width: auto;
+  margin-right: 6px;
+  margin-top: 0;
+}
+
+.form-order button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.form-order button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.form-order button[type="submit"]:active {
+  background-color: #1e7e34;
+}
+
+/* Order Detail Styling */
+.order-detail {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* General styling for all order fields */
+.order-detail > div {
+  margin-bottom: 8px;
+  padding: 5px 0;
+}
+
+/* Label styling */
+.order-label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 8px;
+  text-transform: capitalize;
+}
+
+/* Value styling */
+.order-value {
+  color: #555;
+}
+
+/* Specific field styling */
+.order-customer .order-label {
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.order-customer .order-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.order-pickupDate .order-value {
+  color: #007bff;
+  font-weight: 500;
+}
+
+.order-comments .order-value {
+  color: #666;
+  font-size: 14px;
+}
+
+.order-dressings .order-value {
+  font-style: italic;
+}
