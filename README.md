@@ -1,12 +1,89 @@
-# React + Vite
+# 📚 React Practice Projects
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A monorepo containing multiple React projects demonstrating various concepts and patterns, with a shared Node.js backend API.
 
-Currently, two official plugins are available:
+## 🚀 Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend Development
+```bash
+pnpm install
+pnpm dev
+```
 
-## Expanding the ESLint configuration
+### Backend Development  
+```bash
+cd backend
+npm install
+npm start
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Full Stack Development
+```bash
+# Terminal 1: Start backend
+cd backend && npm start
+
+# Terminal 2: Start frontend  
+pnpm dev
+```
+
+## 📁 Project Structure
+
+```
+react-app/
+├── src/                    # Frontend React applications
+│   ├── components/         # Shared components
+│   ├── pages/             # Individual project pages
+│   └── utils/             # Utilities and API helpers
+├── backend/               # Node.js/Express API server
+├── docs/                  # 📖 Comprehensive documentation
+└── README.md              # This file
+```
+
+## 🎯 Available Projects
+
+| Project | Path | Description |
+|---------|------|-------------|
+| **BookStore** | `/book-store` | Mock API data fetching and processing |
+| **Restaurant System** | `/restaurant-system` | Order management with CRUD operations |
+| **Image Carousel III** | `/image-carousel-iii` | Interactive UI components |
+
+## 📖 Documentation
+
+**📚 [Complete Documentation](./docs/)** - Comprehensive guides and project documentation
+
+### Quick Links
+- **[Project Documentation](./docs/projects/)** - Project index and overview
+  - **[BookStore](./src/pages/BookStore/README.md)** - In-project documentation
+  - **[Restaurant System](./src/pages/RestaurantSystem/README.md)** - In-project documentation
+- **[React Concepts](./docs/guides/react-concepts/)** - Learning materials and patterns
+- **[Testing Guides](./docs/guides/testing/)** - Testing strategies and setup
+- **[Backend API](./docs/backend/)** - API documentation and setup
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React 18** with TypeScript
+- **Vite** for build tooling
+- **React Router** for navigation
+- **CSS Modules** for styling
+
+### Backend
+- **Node.js** with Express
+- **File-based JSON storage**
+- **CORS** enabled for development
+- **Modular route structure**
+
+## 🎓 Learning Objectives
+
+This project demonstrates:
+- **Component Architecture** - Reusable and maintainable components
+- **State Management** - Various React state patterns
+- **API Integration** - Frontend-backend communication
+- **Form Handling** - Controlled components and validation
+- **Testing** - Unit and manual testing strategies
+- **Monorepo Structure** - Organizing multiple related projects
+
+---
+
+📅 **Last Updated:** June 29, 2025  
+🏷️ **Version:** 1.0.0
