@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProjectLayout } from '../../components';
-import { Order } from '../../types';
+import { Order } from './types';
 import FormOrder from './components/FormOrder';
 import OrderCard from './components/OrderCard';
 import optionData from './data/optionData.json';
