@@ -1,0 +1,23 @@
+{
+  "dish": {
+    "d1": "Salad Bowl",
+    "d2": "Grain Bowl",
+    "d3": "Noodle Bowl"
+  },
+  "protein": {
+    "p1": "Grilled Chicken",
+    "p2": "Tofu",
+    "p3": "Steak"
+  },
+  "spice": {
+    "s1": "Mild",
+    "s2": "Medium",
+    "s3": "Hot",
+    "s4": "Extra Hot"
+  },
+  "dressings": {
+    "dr1": "Ranch",
+    "dr2": "Balsamic Vinaigrette",
+    "dr3": "Caesar"
+  }
+}
