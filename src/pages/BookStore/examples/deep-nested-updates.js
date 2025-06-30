@@ -123,13 +123,25 @@ function updateNestedProperty(obj, path, updateFn) {
 // Usage examples:
 function helperBasedUpdate(prevState, newBook) {
   // Add book to array
-  const withNewBook = updateNestedProperty(prevState, 'shelves.fiction.categories.scifi.books', books => [...books, newBook]);
+  const withNewBook = updateNestedProperty(
+    prevState,
+    'shelves.fiction.categories.scifi.books',
+    books => [...books, newBook]
+  );
 
   // Update count
-  const withUpdatedCount = updateNestedProperty(withNewBook, 'shelves.fiction.categories.scifi.metadata.count', count => count + 1);
+  const withUpdatedCount = updateNestedProperty(
+    withNewBook,
+    'shelves.fiction.categories.scifi.metadata.count',
+    count => count + 1
+  );
 
   // Update timestamp
-  return updateNestedProperty(withUpdatedCount, 'shelves.fiction.categories.scifi.metadata.lastUpdated', () => Date.now());
+  return updateNestedProperty(
+    withUpdatedCount,
+    'shelves.fiction.categories.scifi.metadata.lastUpdated',
+    () => Date.now()
+  );
 }
 
 // ===== ✅ METHOD 3: IMMER LIBRARY (Most Readable) =====

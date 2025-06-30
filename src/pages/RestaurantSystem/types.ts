@@ -26,12 +26,12 @@ export type BaseOption = 'Salad Bowl' | 'Grain Bowl' | 'Noodle Bowl' | 'Rice Bow
 export type ProteinOption = 'Grilled Chicken' | 'Tofu' | 'Steak' | 'Salmon' | 'Veggie Patty';
 
 // Dressing options
-export type DressingOption = 
-  | 'Balsamic Vinaigrette' 
-  | 'Ranch' 
-  | 'Caesar' 
-  | 'Italian' 
-  | 'Honey Mustard' 
+export type DressingOption =
+  | 'Balsamic Vinaigrette'
+  | 'Ranch'
+  | 'Caesar'
+  | 'Italian'
+  | 'Honey Mustard'
   | 'Thai Peanut';
 
 // Order status for future use

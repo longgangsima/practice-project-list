@@ -302,7 +302,9 @@ describe('🧪 Part 1: Display Orders - Test Suite', () => {
     render(<RestaurantOrder />);
 
     // Each order should have a unique UUID
-    const orderIds = screen.getAllByText(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
+    const orderIds = screen.getAllByText(
+      /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+    );
     expect(orderIds.length).toBeGreaterThan(0);
 
     // IDs should be displayed (shortened format - first 8 chars)

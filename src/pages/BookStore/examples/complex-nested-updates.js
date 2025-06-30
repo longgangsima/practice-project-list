@@ -74,7 +74,7 @@ function addBookWrongWay(store, category, letter, newBook) {
 }
 
 // 测试错误方式
-const wrongResult = addBookWrongWay(complexBookStore, 'fiction', 'A', {
+const _wrongResult = addBookWrongWay(complexBookStore, 'fiction', 'A', {
   id: 'a3',
   title: 'Another Book',
   author: 'Test Author',
@@ -82,7 +82,10 @@ const wrongResult = addBookWrongWay(complexBookStore, 'fiction', 'A', {
 });
 
 console.log('错误方式：原始数据被污染了！');
-console.log('原始A组书籍数量:', complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length);
+console.log(
+  '原始A组书籍数量:',
+  complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
 
 // ===== ✅ 正确的更新方式 =====
 console.log('\n=== 正确的更新方式 ===');
@@ -103,8 +106,12 @@ function addBookCorrectWay1(store, storeName, categoryName, letter, newBook) {
               ...store.stores[storeName].categories[categoryName].letterGroups,
               [letter]: {
                 ...store.stores[storeName].categories[categoryName].letterGroups[letter],
-                count: store.stores[storeName].categories[categoryName].letterGroups[letter].count + 1,
-                books: [...store.stores[storeName].categories[categoryName].letterGroups[letter].books, newBook],
+                count:
+                  store.stores[storeName].categories[categoryName].letterGroups[letter].count + 1,
+                books: [
+                  ...store.stores[storeName].categories[categoryName].letterGroups[letter].books,
+                  newBook,
+                ],
               },
             },
           },
@@ -132,11 +139,15 @@ function updateNestedProperty(obj, path, updateFn) {
 }
 
 function addBookCorrectWay2(store, storeName, categoryName, letter, newBook) {
-  return updateNestedProperty(store, ['stores', storeName, 'categories', categoryName, 'letterGroups', letter], letterGroup => ({
-    ...letterGroup,
-    count: letterGroup.count + 1,
-    books: [...letterGroup.books, newBook],
-  }));
+  return updateNestedProperty(
+    store,
+    ['stores', storeName, 'categories', categoryName, 'letterGroups', letter],
+    letterGroup => ({
+      ...letterGroup,
+      count: letterGroup.count + 1,
+      books: [...letterGroup.books, newBook],
+    })
+  );
 }
 
 // 方法3: 使用Immer库 (推荐生产环境)
@@ -197,30 +208,49 @@ console.log('\n=== 测试所有方法 ===');
 const testBook = { id: 'a3', title: 'Atlas Shrugged', author: 'Ayn Rand', stock: 4 };
 
 // 保存原始数据用于对比
-const originalCount = complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length;
+const originalCount =
+  complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length;
 
 console.log('原始A组书籍数量:', originalCount);
 
 // 测试方法1: 手动深层拷贝
 const result1 = addBookCorrectWay1(complexBookStore, 'downtown', 'fiction', 'A', testBook);
-console.log('方法1结果 - A组书籍数量:', result1.stores.downtown.categories.fiction.letterGroups.A.books.length);
-console.log('原始数据是否被改变:', complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length === originalCount);
+console.log(
+  '方法1结果 - A组书籍数量:',
+  result1.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
+console.log(
+  '原始数据是否被改变:',
+  complexBookStore.stores.downtown.categories.fiction.letterGroups.A.books.length === originalCount
+);
 
 // 测试方法2: Helper函数
 const result2 = addBookCorrectWay2(complexBookStore, 'downtown', 'fiction', 'A', testBook);
-console.log('方法2结果 - A组书籍数量:', result2.stores.downtown.categories.fiction.letterGroups.A.books.length);
+console.log(
+  '方法2结果 - A组书籍数量:',
+  result2.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
 
 // 测试方法3: Immer (模拟)
 const result3 = addBookWithImmer(complexBookStore, 'downtown', 'fiction', 'A', testBook);
-console.log('方法3结果 - A组书籍数量:', result3.stores.downtown.categories.fiction.letterGroups.A.books.length);
+console.log(
+  '方法3结果 - A组书籍数量:',
+  result3.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
 
 // 测试方法4: JSON深拷贝
 const result4 = addBookWithJSONClone(complexBookStore, 'downtown', 'fiction', 'A', testBook);
-console.log('方法4结果 - A组书籍数量:', result4.stores.downtown.categories.fiction.letterGroups.A.books.length);
+console.log(
+  '方法4结果 - A组书籍数量:',
+  result4.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
 
 // 测试方法5: 递归深拷贝
 const result5 = addBookWithDeepClone(complexBookStore, 'downtown', 'fiction', 'A', testBook);
-console.log('方法5结果 - A组书籍数量:', result5.stores.downtown.categories.fiction.letterGroups.A.books.length);
+console.log(
+  '方法5结果 - A组书籍数量:',
+  result5.stores.downtown.categories.fiction.letterGroups.A.books.length
+);
 
 // ===== 📊 性能和复杂度对比 =====
 console.log('\n=== 方法对比总结 ===');

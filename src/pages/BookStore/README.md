@@ -176,16 +176,19 @@ const booksWithAuthors = validBooks.map(book => {
 
 ```typescript
 // 按作者姓氏首字母分组
-const grouped = books.reduce((acc, book) => {
-  const lastName = book.author.name.split(' ').pop() || '';
-  const firstLetter = lastName.charAt(0).toUpperCase();
+const grouped = books.reduce(
+  (acc, book) => {
+    const lastName = book.author.name.split(' ').pop() || '';
+    const firstLetter = lastName.charAt(0).toUpperCase();
 
-  if (!acc[firstLetter]) {
-    acc[firstLetter] = [];
-  }
-  acc[firstLetter].push(book);
-  return acc;
-}, {} as Record<string, BookWithAuthor[]>);
+    if (!acc[firstLetter]) {
+      acc[firstLetter] = [];
+    }
+    acc[firstLetter].push(book);
+    return acc;
+  },
+  {} as Record<string, BookWithAuthor[]>
+);
 
 // 组内按姓氏排序
 Object.keys(grouped).forEach(letter => {

@@ -15,7 +15,7 @@
 /* Form Order Styling */
 .create-order {
   max-width: 600px;
-  margin: 0 auto 40px auto;
+  margin: 0 auto 40px;
   padding: 20px;
 }
 
@@ -24,7 +24,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
 }
 
 .form-order label {
@@ -51,7 +51,7 @@
 .form-order textarea:focus {
   outline: none;
   border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 2px rgb(0, 123, 255, 0.25);
 }
 
 .form-order textarea {
@@ -79,16 +79,16 @@
   font-weight: normal;
 }
 
-.form-order input[type="radio"],
-.form-order input[type="checkbox"] {
+.form-order input[type='radio'],
+.form-order input[type='checkbox'] {
   width: auto;
   margin-right: 6px;
   margin-top: 0;
 }
 
-.form-order button[type="submit"] {
+.form-order button[type='submit'] {
   background-color: #28a745;
-  color: white;
+  color: #fff;
   border: none;
   padding: 12px 24px;
   border-radius: 4px;
@@ -99,11 +99,11 @@
   margin-top: 8px;
 }
 
-.form-order button[type="submit"]:hover {
+.form-order button[type='submit']:hover {
   background-color: #218838;
 }
 
-.form-order button[type="submit"]:active {
+.form-order button[type='submit']:active {
   background-color: #1e7e34;
 }
 
@@ -114,7 +114,7 @@
   padding: 20px;
   margin-bottom: 20px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgb(0, 0, 0, 0.1);
 }
 
 /* General styling for all order fields */

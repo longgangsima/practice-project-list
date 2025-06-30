@@ -60,18 +60,18 @@
 }
 
 /* Responsive design */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .project-header-nav {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
+
   .project-title {
     order: -1;
     margin-bottom: 0.5rem;
   }
-  
+
   .nav-link--prev,
   .nav-link--next {
     order: 0;

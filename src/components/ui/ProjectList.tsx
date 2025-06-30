@@ -10,11 +10,11 @@ type ProjectListProps = {
   showDescription?: boolean;
 };
 
-export default function ProjectList({ 
-  projects, 
-  className = '', 
+export default function ProjectList({
+  projects,
+  className = '',
   variant = 'default',
-  showDescription = false 
+  showDescription = false,
 }: ProjectListProps) {
   if (projects.length === 0) {
     return (
@@ -27,7 +27,7 @@ export default function ProjectList({
   return (
     <div className={`project-list project-list--${variant} ${className}`}>
       <ul className="project-list__items" role="list">
-        {projects.map((project) => (
+        {projects.map(project => (
           <li key={project.path} className="project-list__item">
             <Link
               to={project.path}
@@ -40,7 +40,9 @@ export default function ProjectList({
                   <p className="project-list__description">{project.description}</p>
                 )}
               </div>
-              <span className="project-list__arrow" aria-hidden="true">→</span>
+              <span className="project-list__arrow" aria-hidden="true">
+                →
+              </span>
             </Link>
           </li>
         ))}

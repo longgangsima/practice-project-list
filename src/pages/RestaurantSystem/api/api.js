@@ -100,7 +100,7 @@ export const api = {
       console.error('Error checking API health:', error);
       return false;
     }
-  }
+  },
 };
 
 // Example usage:
