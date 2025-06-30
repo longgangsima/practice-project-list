@@ -51,11 +51,13 @@ const FormOrder = ({ onAdd, optionData }) => {
     e.preventDefault();
 
     // ✅ Enhanced validation for all required fields
-    const requiredFields = ['customer', 'base', 'protein', 'spice', 'address'];
+    const requiredFields = ['customer', 'base', 'protein', 'spice'];
     const missingFields = requiredFields.filter(field => !formData[field]);
-    
+
     if (missingFields.length > 0 || formData.quantity < 1) {
-      alert(`Please fill in all required fields: ${missingFields.join(', ')}${formData.quantity < 1 ? ', quantity must be at least 1' : ''}`);
+      alert(
+        `Please fill in all required fields: ${missingFields.join(', ')}${formData.quantity < 1 ? ', quantity must be at least 1' : ''}`
+      );
       return;
     }
 
@@ -81,7 +83,7 @@ const FormOrder = ({ onAdd, optionData }) => {
         comments: '',
         address: '',
       });
-      
+
       console.log('Order created successfully:', newOrder);
     } catch (error) {
       console.error('Error creating order:', error);
@@ -127,14 +129,7 @@ const FormOrder = ({ onAdd, optionData }) => {
     <form className="form-order" onSubmit={handleSubmit}>
       <label>
         {'Customer: '}
-        <input
-          type="text"
-          name="customer"
-          value={formData.customer}
-          placeholder="Enter customer name"
-          required
-          onChange={handleChange}
-        />
+        <input type="text" name="customer" value={formData.customer} placeholder="Enter customer name" required onChange={handleChange} />
       </label>
       <label>
         {'Base Dish: '}
