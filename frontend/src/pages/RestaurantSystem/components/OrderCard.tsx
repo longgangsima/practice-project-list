@@ -1,4 +1,4 @@
-import { OrderCardProps } from '../../../types';
+import { OrderCardProps } from '../types';
 
 export default function OrderCard({ order }: OrderCardProps) {
   return (
