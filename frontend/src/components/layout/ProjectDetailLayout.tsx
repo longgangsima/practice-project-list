@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import ProjectHeaderNav from '../navigation/ProjectHeaderNav';
 import './ProjectDetailLayout.css';
@@ -35,16 +35,12 @@ export default function ProjectDetailLayout({
             <div className="sidebar-header">
               <h3>📋 Project Requirements</h3>
             </div>
-            <div className="sidebar-content">
-              {projectRequirements}
-            </div>
+            <div className="sidebar-content">{projectRequirements}</div>
           </aside>
         )}
 
         {/* Main Content Area */}
-        <main className="project-main-content">
-          {children}
-        </main>
+        <main className="project-main-content">{children}</main>
       </div>
     </div>
   );

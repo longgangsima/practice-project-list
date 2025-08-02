@@ -1,6 +1,6 @@
 import { ProjectDetailLayout } from '../../components';
-import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import ImageCarouselRequirements from './components/ImageCarouselRequirements';
+import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import './styles.css';
 
 const images = [
@@ -32,7 +32,7 @@ const images = [
 
 export default function ImageCarousel() {
   return (
-    <ProjectDetailLayout 
+    <ProjectDetailLayout
       currentPath="/image-carousel"
       projectRequirements={<ImageCarouselRequirements />}
     >

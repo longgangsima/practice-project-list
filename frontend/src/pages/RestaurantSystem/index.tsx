@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { ProjectDetailLayout } from '../../components';
-import { Order } from './types';
 import FormOrder from './components/FormOrder';
 import OrderCard from './components/OrderCard';
 import RestaurantRequirements from './components/RestaurantRequirements';
 import optionData from './data/optionData.json';
 import orders from './data/orders.json';
 import './styles/basic.css';
+import { Order } from './types';
 export default function RestaurantSystem() {
   const [orderList, setOrderList] = useState<Order[]>(orders);
 
@@ -19,7 +19,7 @@ export default function RestaurantSystem() {
   };
 
   return (
-    <ProjectDetailLayout 
+    <ProjectDetailLayout
       currentPath="/restaurant-system"
       projectRequirements={<RestaurantRequirements />}
     >

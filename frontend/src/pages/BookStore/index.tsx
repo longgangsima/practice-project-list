@@ -144,7 +144,7 @@ export default function BookStore() {
 
   if (loading) {
     return (
-      <ProjectDetailLayout 
+      <ProjectDetailLayout
         currentPath="/book-store"
         projectRequirements={<BookStoreRequirements />}
       >
@@ -158,7 +158,7 @@ export default function BookStore() {
 
   if (error) {
     return (
-      <ProjectDetailLayout 
+      <ProjectDetailLayout
         currentPath="/book-store"
         projectRequirements={<BookStoreRequirements />}
       >
@@ -171,10 +171,7 @@ export default function BookStore() {
   }
 
   return (
-    <ProjectDetailLayout 
-      currentPath="/book-store"
-      projectRequirements={<BookStoreRequirements />}
-    >
+    <ProjectDetailLayout currentPath="/book-store" projectRequirements={<BookStoreRequirements />}>
       {/* 🔄 Toggle Controls */}
       <div
         style={{
