@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ProjectDetailLayout } from '../../components';
+import RADIORequirementsImpl from '../CardFlipsRADIO/components/Requirements/RADIORequirements';
 import RADIOGameBoard from '../CardFlipsRADIO/index';
 import CardFlipsRequirements from './components/CardFlipsRequirements';
 import GameBoard from './components/GameBoard';
-import RADIORequirements from './components/RADIORequirements';
 import './styles.css';
 import { generateRandomCards } from './utils';
 
@@ -12,7 +12,7 @@ export default function CardFlips() {
 
   // Dynamic requirements based on active tab
   const getCurrentRequirements = () => {
-    return activeTab === 'default' ? <CardFlipsRequirements /> : <RADIORequirements />;
+    return activeTab === 'default' ? <CardFlipsRequirements /> : <RADIORequirementsImpl />;
   };
 
   return (
