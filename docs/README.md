@@ -13,12 +13,13 @@ react-app/
 
 ## 📖 Documentation Index
 
-### 🎯 [Project Guides](./projects/)
+### 🎯 Project Documentation
 
-- **[BookStore](../src/pages/BookStore/README.md)** - Mock API data fetching and processing
-- **[Restaurant System](../src/pages/RestaurantSystem/README.md)** - Order management system
-- **Image Carousel III** - Interactive image carousel
-- **Trading Chart** - Financial data visualization
+- **[BookStore](../frontend/src/pages/BookStore/README.md)** - Mock API data fetching and processing
+- **[Restaurant System](../frontend/src/pages/RestaurantSystem/README.md)** - Order management system
+- **[Card Flips](../frontend/src/pages/CardFlips/README.md)** - Memory game with tabbed implementations (includes RADIO framework)
+- **[Card Flips Comparison](./CARD-FLIPS-COMPARISON.md)** - Implementation comparison analysis
+- **Image Carousel** - Interactive image carousel
 
 ### 🧠 [Learning Guides](./guides/)
 
@@ -27,7 +28,14 @@ react-app/
 
 ### 🔧 [Backend Documentation](./backend/)
 
-- **[API Reference](./backend/)** - Backend API setup and endpoints
+- **[Backend Documentation](./backend/)** - API reference and setup
+
+### 📜 [Development History](./development-history/)
+
+- Project restructuring logs
+- Migration documentation
+- Code cleanup summaries
+- Setup and configuration notes
 
 ## 🚀 Quick Start
 
