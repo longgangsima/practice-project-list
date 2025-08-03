@@ -19,7 +19,12 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
     // - The card doesn't exist.
     // - Two cards are already flipped and being compared.
     // - The clicked card is already flipped or matched.
-    if (!clickedCard || flippedCards.length >= 2 || clickedCard.isFlipped || clickedCard.isMatched) {
+    if (
+      !clickedCard ||
+      flippedCards.length >= 2 ||
+      clickedCard.isFlipped ||
+      clickedCard.isMatched
+    ) {
       return;
     }
 
