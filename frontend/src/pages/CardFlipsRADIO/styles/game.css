@@ -1,0 +1,385 @@
+/* RADIO Framework Card Flips - Core Game Styles */
+
+.radio-game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.radio-game-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.radio-game-title {
+  color: #007acc;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.radio-game-subtitle {
+  color: #666;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Game Board */
+.radio-game-board {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px solid #e9ecef;
+  aspect-ratio: 1;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Card Styles */
+.radio-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.2s ease;
+}
+
+.radio-card:hover:not(.disabled) {
+  transform: scale(1.05);
+}
+
+.radio-card:focus-visible {
+  outline: 3px solid #007acc;
+  outline-offset: 2px;
+}
+
+.radio-card.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.radio-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.radio-card.matched .card-back {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  animation: matchPulse 0.6s ease-in-out;
+}
+
+@keyframes matchPulse {
+  0%,
+  100% {
+    transform: rotateY(180deg) scale(1);
+  }
+  50% {
+    transform: rotateY(180deg) scale(1.1);
+  }
+}
+
+/* Game Stats */
+.radio-game-stats {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #007acc;
+}
+
+.completion-message {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #28a745;
+  padding: 1rem;
+  background: #d4edda;
+  border-radius: 8px;
+  animation: celebrateWin 1s ease-in-out;
+}
+
+@keyframes celebrateWin {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25%,
+  75% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Game Controls */
+.radio-game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.control-button:focus-visible {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+.control-button.primary {
+  background: #007acc;
+  color: white;
+}
+
+.control-button.primary:hover:not(:disabled) {
+  background: #005a9e;
+  transform: translateY(-1px);
+}
+
+.control-button.secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.control-button.secondary:hover:not(:disabled) {
+  background: #545b62;
+  transform: translateY(-1px);
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.game-status {
+  margin-left: 1rem;
+}
+
+.status-indicator {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-indicator.idle {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.status-indicator.playing {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-indicator.won {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-indicator.paused {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Performance Indicator */
+.performance-indicator {
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.performance-indicator small {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Grid Size Selector */
+.grid-size-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.selector-label {
+  font-weight: 600;
+  color: #495057;
+  font-size: 1rem;
+}
+
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.size-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.size-option:hover:not(:disabled) {
+  border-color: #007acc;
+  transform: translateY(-1px);
+}
+
+.size-option.active {
+  border-color: #007acc;
+  background: #e3f2fd;
+}
+
+.size-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.size-label {
+  font-weight: 600;
+  color: #007acc;
+  font-size: 1rem;
+}
+
+.size-description {
+  font-size: 0.75rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .radio-game-container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .radio-game-board {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .radio-game-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .radio-game-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game-status {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .radio-game-board {
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 1.25rem;
+  }
+}
