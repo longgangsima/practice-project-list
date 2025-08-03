@@ -3,8 +3,6 @@ import { memo } from 'react';
 const RADIORequirements = memo(() => {
   return (
     <div className="radio-requirements">
-      <h3>🎯 RADIO Framework Implementation</h3>
-
       <div className="requirements-grid">
         <div className="requirement-section">
           <h4>🔧 Requirements (R)</h4>

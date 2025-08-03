@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
 import ProjectHeaderNav from '../navigation/ProjectHeaderNav';
 import './ProjectDetailLayout.css';
 
@@ -9,6 +8,7 @@ type ProjectDetailLayoutProps = {
   showHomeLink?: boolean;
   className?: string;
   projectRequirements?: ReactNode;
+  implementationTabs?: ReactNode;
 };
 
 export default function ProjectDetailLayout({
@@ -17,24 +17,21 @@ export default function ProjectDetailLayout({
   showHomeLink = true,
   className = '',
   projectRequirements,
+  implementationTabs,
 }: ProjectDetailLayoutProps) {
   return (
     <div className={`project-detail-wrapper ${className}`}>
-      {showHomeLink && (
-        <Link to="/" className="home-link" aria-label="Go back to home">
-          ⬅ Home
-        </Link>
-      )}
+      <ProjectHeaderNav currentPath={currentPath} showHomeLink={showHomeLink} />
 
-      <ProjectHeaderNav currentPath={currentPath} />
+      {/* Compact implementation tabs */}
+      {implementationTabs && (
+        <div className="implementation-tabs-container">{implementationTabs}</div>
+      )}
 
       <div className="project-detail-container">
         {/* Left Sidebar - Project Requirements */}
         {projectRequirements && (
           <aside className="project-requirements">
-            <div className="sidebar-header">
-              <h3>📋 Project Requirements</h3>
-            </div>
             <div className="sidebar-content">{projectRequirements}</div>
           </aside>
         )}

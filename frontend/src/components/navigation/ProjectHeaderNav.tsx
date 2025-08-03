@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { projectList } from '../../constants/projectList';
 import './ProjectHeaderNav.css';
@@ -6,9 +5,14 @@ import './ProjectHeaderNav.css';
 type ProjectHeaderNavProps = {
   currentPath: string;
   className?: string;
+  showHomeLink?: boolean;
 };
 
-export default function ProjectHeaderNav({ currentPath, className = '' }: ProjectHeaderNavProps) {
+export default function ProjectHeaderNav({
+  currentPath,
+  className = '',
+  showHomeLink = true,
+}: ProjectHeaderNavProps) {
   const currentIndex = projectList.findIndex(p => p.path === currentPath);
 
   // Fallback for invalid path
@@ -29,34 +33,40 @@ export default function ProjectHeaderNav({ currentPath, className = '' }: Projec
   const current = projectList[currentIndex];
 
   return (
-    <nav className={`project-header-nav ${className}`} aria-label="Project navigation">
-      {hasMultipleProjects ? (
-        <>
-          {prev && (
+    <div className="project-nav-container">
+      {/* Unified Navigation Bar with Title */}
+      <nav className="unified-nav-header" aria-label="Project navigation">
+        <div className="nav-buttons-group">
+          {showHomeLink && (
+            <Link to="/" className="nav-button nav-button--home" aria-label="Go back to home">
+              🏠 Home
+            </Link>
+          )}
+
+          {hasMultipleProjects && prev && (
             <Link
               to={prev.path}
-              className="nav-link nav-link--prev"
+              className="nav-button nav-button--prev"
               aria-label={`Go to previous project: ${prev.name}`}
             >
-              ← {prev.name}
+              ← Prev
             </Link>
           )}
 
-          <h1 className="project-title">{current.name}</h1>
-
-          {next && (
+          {hasMultipleProjects && next && (
             <Link
               to={next.path}
-              className="nav-link nav-link--next"
+              className="nav-button nav-button--next"
               aria-label={`Go to next project: ${next.name}`}
             >
-              {next.name} →
+              Next →
             </Link>
           )}
-        </>
-      ) : (
-        <h1 className="project-title project-title--centered">{current.name}</h1>
-      )}
-    </nav>
+        </div>
+
+        {/* Project Title in the same row */}
+        <h1 className="project-title-inline">{current.name}</h1>
+      </nav>
+    </div>
   );
 }

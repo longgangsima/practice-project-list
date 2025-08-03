@@ -59,18 +59,43 @@
 .card-flips-container {
   flex: 1;
   overflow-y: auto;
-  padding: 2rem;
+  padding: 1rem;
+  width: 100%;
 }
 
 .tab-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   min-height: 500px;
 }
 
 .implementation-section {
   animation: fade-in 0.3s ease-in-out;
-  padding: 1rem;
+  padding: 0;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: auto hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.implementation-section::-webkit-scrollbar {
+  height: 8px;
+}
+
+.implementation-section::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+.implementation-section::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.implementation-section::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
 
 @keyframes fade-in {
@@ -85,15 +110,39 @@
   }
 }
 
-/* Original Game Styles */
+/* Original Game Styles - Horizontal Scrollable Layout */
 .card-flips-game {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: #f0f4f8; /* Light gray background for better contrast */
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   min-height: 500px;
+}
+
+/* Horizontal Scrollable Container */
+.horizontal-game-container {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.game-section {
+  flex: 1;
+  width: 100%;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e9ecef;
+}
+
+.game-section h3 {
+  margin: 0 0 1rem;
+  color: #2c3e50;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 .cards-grid {
@@ -262,6 +311,77 @@
   line-height: 1.4;
 }
 
+/* Additional styles for horizontal scrollable content */
+.stats-content,
+.achievements-content,
+.controls-content,
+.customization-content {
+  color: #495057;
+  line-height: 1.6;
+}
+
+.stats-content p {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #007acc;
+}
+
+.mini-game-preview {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.mini-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.mini-card {
+  background: #007acc;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.achievement-item,
+.theme-option {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #28a745;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.achievement-item:hover,
+.theme-option:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-option {
+  border-left-color: #ffc107;
+  cursor: pointer;
+}
+
+.controls-content p {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 6px;
+  border-left: 3px solid #6f42c1;
+}
+
 /* Responsive Design */
 @media (width <= 768px) {
   .implementation-tabs {
@@ -288,5 +408,13 @@
 
   .card-flips-game {
     padding: 1rem;
+  }
+
+  .horizontal-game-container {
+    min-width: 200%; /* More scroll on mobile */
+  }
+
+  .game-section {
+    min-width: 300px;
   }
 }

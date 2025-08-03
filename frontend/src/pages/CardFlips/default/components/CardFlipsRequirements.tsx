@@ -1,8 +1,6 @@
 export default function CardFlipsRequirements() {
   return (
     <div className="requirements-content">
-      <h4>📚 Current Implementation</h4>
-
       <div className="requirement-section">
         <h5>🎯 Game Objective</h5>
         <p>Match all pairs of cards by flipping them over and finding matching letters.</p>
