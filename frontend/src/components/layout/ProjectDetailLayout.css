@@ -1,36 +1,14 @@
 .project-detail-wrapper {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+  width: 100%;
+  margin: 0;
+  padding: 1rem;
   min-height: 100vh;
-}
-
-.home-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  color: #6c757d;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease;
-}
-
-.home-link:hover {
-  color: #495057;
-}
-
-.home-link:focus {
-  outline: 2px solid #007bff;
-  outline-offset: 2px;
-  border-radius: 0.25rem;
 }
 
 .project-detail-container {
   display: grid;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   min-height: calc(100vh - 200px);
 }
 
@@ -41,48 +19,116 @@
 
 /* When main + left sidebar (two-column layout) */
 .project-detail-container:has(.project-requirements) {
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 2fr 3fr;
 }
 
 .project-requirements {
-  background: #f8f9fa;
-  border-radius: 12px;
+  background: #fff;
   border: 1px solid #e9ecef;
+  border-radius: 8px;
   height: fit-content;
   position: sticky;
-  top: 2rem;
-  max-height: calc(100vh - 4rem);
+  top: 8rem; /* Adjusted for both navigation and implementation tabs */
+  max-height: calc(100vh - 10rem);
   overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
 }
 
-.sidebar-header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid #dee2e6;
-  background: #fff;
-  border-radius: 12px 12px 0 0;
-}
-
-.sidebar-header h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #495057;
-}
-
 .sidebar-content {
-  padding: 1.25rem;
   overflow-y: auto;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #495057;
   flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: #f7fafc;
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
 
 .project-main-content {
   background: #fff;
-  border-radius: 12px;
+  border-radius: 8px;
   border: 1px solid #e9ecef;
-  padding: 2rem;
   min-height: 500px;
+}
+
+/* Compact implementation tabs - Project Level Header */
+.implementation-tabs-container {
+  position: sticky;
+  top: 4.5rem; /* Position below the main navigation */
+  z-index: 90;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.compact-implementation-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.compact-tab-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #495057;
+  white-space: nowrap;
+}
+
+.compact-tab-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.compact-tab-button {
+  background: #fff;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  text-align: center;
+}
+
+.compact-tab-button:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.compact-tab-button.active {
+  background: #007acc;
+  color: #fff;
+  border-color: #007acc;
 }
 
 /* Responsive Design */
@@ -106,10 +152,28 @@
   .project-requirements {
     position: static;
     max-height: 400px;
+    top: auto; /* Reset sticky positioning on tablets */
+  }
+
+  .implementation-tabs-container {
+    position: static; /* Make non-sticky on tablets */
+    border-radius: 8px;
+    margin: 0.5rem 0;
   }
 
   .project-main-content {
     padding: 1.5rem;
+  }
+
+  /* Adjust implementation tabs for mobile */
+  .implementation-tabs-container {
+    top: 4rem; /* Reduced top offset for mobile navigation */
+    padding: 0.4rem 0.8rem;
+  }
+
+  .project-requirements {
+    top: 7rem; /* Adjusted for mobile */
+    max-height: calc(100vh - 9rem);
   }
 }
 
@@ -124,10 +188,6 @@
 
   .sidebar-content {
     padding: 1rem;
-  }
-
-  .sidebar-header {
-    padding: 0.75rem 1rem;
   }
 }
 

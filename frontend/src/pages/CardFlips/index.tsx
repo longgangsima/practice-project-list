@@ -62,4 +62,35 @@ export default function CardFlips() {
       </ProjectDetailLayout>
     </div>
   );
+
+  return (
+    <ProjectDetailLayout
+      currentPath="/card-flips"
+      projectRequirements={getCurrentRequirements()}
+      implementationTabs={implementationTabs}
+    >
+      <div className="card-flips-container">
+        {/* Tab Content */}
+        <div className="tab-content">
+          {activeTab === 'default' ? (
+            <div className="implementation-section">
+              <div className="horizontal-game-container">
+                <div className="game-section">
+                  <GameBoard Cards={generateRandomCards()} />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="implementation-section">
+              <div className="horizontal-game-container">
+                <div className="game-section">
+                  <RADIOGameBoard gridSize={4} flipDelay={1000} />
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </ProjectDetailLayout>
+  );
 }
