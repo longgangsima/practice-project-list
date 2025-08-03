@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { CardGeneratorService } from '../services/CardGenerator';
 import { MatchingEngineService } from '../services/MatchingEngine';
 import { GameConfig } from '../types/GameTypes';
@@ -11,12 +11,15 @@ export function useGameEngine(config: Partial<GameConfig> = {}) {
   const matchingEngine = useRef(MatchingEngineService.getInstance());
   const flipDelayRef = useRef<NodeJS.Timeout>();
 
-  const gameConfig: GameConfig = {
-    gridSize: (config.gridSize || GAME_CONFIG.DEFAULT_GRID_SIZE) as 2 | 4 | 6,
-    flipDelay: config.flipDelay || GAME_CONFIG.DEFAULT_FLIP_DELAY,
-    maxFlippedCards: GAME_CONFIG.MAX_FLIPPED_CARDS,
-    letters: config.letters || GAME_CONFIG.LETTERS,
-  };
+  const gameConfig: GameConfig = useMemo(
+    () => ({
+      gridSize: (config.gridSize || GAME_CONFIG.DEFAULT_GRID_SIZE) as 2 | 4 | 6,
+      flipDelay: config.flipDelay || GAME_CONFIG.DEFAULT_FLIP_DELAY,
+      maxFlippedCards: GAME_CONFIG.MAX_FLIPPED_CARDS,
+      letters: config.letters || GAME_CONFIG.LETTERS,
+    }),
+    [config.gridSize, config.flipDelay, config.letters]
+  );
 
   // Initialize game
   const initializeGame = useCallback(() => {

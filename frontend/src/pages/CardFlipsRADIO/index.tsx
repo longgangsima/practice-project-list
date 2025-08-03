@@ -1,8 +1,7 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import GameBoard from './components/GameBoard/GameBoard';
 import GameControls from './components/GameBoard/GameControls';
 import GameStats from './components/GameBoard/GameStats';
-import RADIORequirements from './components/Requirements/RADIORequirements';
 import GridSizeSelector from './components/UI/GridSizeSelector';
 import { useGameEngine } from './hooks/useGameEngine';
 import './styles/game.css';
@@ -16,82 +15,168 @@ interface RADIOGameBoardProps {
 const RADIOGameBoard = memo(
   ({ gridSize: initialGridSize = 4, flipDelay = 1000 }: RADIOGameBoardProps) => {
     const [gridSize, setGridSize] = useState<2 | 4 | 6>(initialGridSize);
+    const [error, setError] = useState<string | null>(null);
+    const lastGridSizeRef = useRef<2 | 4 | 6>(initialGridSize);
 
-    const { gameState, gameStats, initializeGame, handleCardClick, resetGame, config } =
-      useGameEngine({ gridSize, flipDelay });
+    try {
+      const { gameState, gameStats, initializeGame, handleCardClick, resetGame, config } =
+        useGameEngine({ gridSize, flipDelay });
 
-    // Initialize game on component mount
-    useEffect(() => {
-      initializeGame();
-    }, [initializeGame, gridSize]);
+      // Initialize game on component mount and when grid size changes
+      useEffect(() => {
+        if (lastGridSizeRef.current !== gridSize) {
+          lastGridSizeRef.current = gridSize;
+          try {
+            initializeGame();
+          } catch (err) {
+            console.error('Failed to initialize game:', err);
+            setError(err instanceof Error ? err.message : 'Failed to initialize game');
+          }
+        }
+      }, [gridSize]);
 
-    const handleNewGame = () => {
-      initializeGame();
-    };
+      // Initialize on first mount
+      useEffect(() => {
+        try {
+          initializeGame();
+        } catch (err) {
+          console.error('Failed to initialize game:', err);
+          setError(err instanceof Error ? err.message : 'Failed to initialize game');
+        }
+      }, []); // Only run once on mount
 
-    const handleGridSizeChange = (newSize: 2 | 4 | 6) => {
-      setGridSize(newSize);
-    };
+      const handleNewGame = () => {
+        try {
+          setError(null);
+          initializeGame();
+        } catch (err) {
+          console.error('Failed to start new game:', err);
+          setError(err instanceof Error ? err.message : 'Failed to start new game');
+        }
+      };
 
-    const isGameDisabled =
-      gameState.gameStatus === 'won' || gameState.flippedCards.length >= config.maxFlippedCards;
+      const handleGridSizeChange = (newSize: 2 | 4 | 6) => {
+        try {
+          setError(null);
+          setGridSize(newSize);
+        } catch (err) {
+          console.error('Failed to change grid size:', err);
+          setError(err instanceof Error ? err.message : 'Failed to change grid size');
+        }
+      };
 
-    return (
-      <div className="radio-game-container">
-        {/* Header */}
-        <div className="radio-game-header">
-          <h2 className="radio-game-title">Card Flips Memory Game</h2>
-          <p className="radio-game-subtitle">
-            RADIO Framework Implementation - Advanced Architecture & Optimization
-          </p>
-        </div>
+      const safeHandleCardClick = (cardId: number) => {
+        try {
+          handleCardClick(cardId);
+        } catch (err) {
+          console.error('Failed to handle card click:', err);
+          setError(err instanceof Error ? err.message : 'Failed to handle card click');
+        }
+      };
 
-        {/* Requirements Display */}
-        <RADIORequirements />
+      const isGameDisabled =
+        gameState.gameStatus === 'won' || gameState.flippedCards.length >= config.maxFlippedCards;
 
-        {/* Grid Size Selector */}
-        <GridSizeSelector
-          currentSize={gridSize}
-          onSizeChange={handleGridSizeChange}
-          disabled={gameState.gameStatus === 'playing'}
-        />
-
-        {/* Game Controls */}
-        <GameControls
-          onReset={resetGame}
-          onNewGame={handleNewGame}
-          gameStatus={gameState.gameStatus}
-          isDisabled={false}
-        />
-
-        {/* Game Stats */}
-        <GameStats
-          moves={gameStats.moves}
-          timeElapsed={gameStats.timeElapsed}
-          accuracy={gameStats.accuracy}
-          remainingPairs={gameStats.remainingPairs}
-          isComplete={gameStats.isComplete}
-        />
-
-        {/* Game Board */}
-        <GameBoard
-          cards={gameState.cards}
-          onCardClick={handleCardClick}
-          gridSize={config.gridSize}
-          isDisabled={isGameDisabled}
-        />
-
-        {/* Performance Indicator */}
-        {gameState.gameStatus === 'playing' && (
-          <div className="performance-indicator" role="status" aria-live="polite">
-            <small>
-              🚀 RADIO Framework: Optimized rendering, advanced state management,
-              accessibility-first design
-            </small>
+      if (error) {
+        return (
+          <div className="radio-game-container">
+            <div
+              style={{
+                background: '#ffebee',
+                color: '#c62828',
+                padding: '1rem',
+                borderRadius: '8px',
+                marginBottom: '1rem',
+              }}
+            >
+              <h3>⚠️ Error in RADIO Game</h3>
+              <p>{error}</p>
+              <button
+                onClick={() => {
+                  setError(null);
+                  handleNewGame();
+                }}
+                style={{ padding: '0.5rem 1rem', marginTop: '0.5rem', cursor: 'pointer' }}
+              >
+                Try Again
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    );
+        );
+      }
+
+      return (
+        <div className="radio-game-container">
+          {/* Grid Size Selector */}
+          <GridSizeSelector
+            currentSize={gridSize}
+            onSizeChange={handleGridSizeChange}
+            disabled={gameState.gameStatus === 'playing'}
+          />
+
+          {/* Game Controls */}
+          <GameControls
+            onReset={resetGame}
+            onNewGame={handleNewGame}
+            gameStatus={gameState.gameStatus}
+            isDisabled={false}
+          />
+
+          {/* Game Stats */}
+          <GameStats
+            moves={gameStats.moves}
+            timeElapsed={gameStats.timeElapsed}
+            accuracy={gameStats.accuracy}
+            remainingPairs={gameStats.remainingPairs}
+            isComplete={gameStats.isComplete}
+          />
+
+          {/* Game Board */}
+          <GameBoard
+            cards={gameState.cards}
+            onCardClick={safeHandleCardClick}
+            gridSize={config.gridSize}
+            isDisabled={isGameDisabled}
+          />
+
+          {/* Performance Indicator */}
+          {gameState.gameStatus === 'playing' && (
+            <div className="performance-indicator" role="status" aria-live="polite">
+              <small>
+                🚀 RADIO Framework: Optimized rendering, advanced state management,
+                accessibility-first design
+              </small>
+            </div>
+          )}
+        </div>
+      );
+    } catch (err) {
+      console.error('Critical error in RADIO Game:', err);
+      return (
+        <div className="radio-game-container">
+          <div
+            style={{
+              background: '#ffebee',
+              color: '#c62828',
+              padding: '1rem',
+              borderRadius: '8px',
+            }}
+          >
+            <h3>⚠️ Critical Error</h3>
+            <p>
+              The RADIO game encountered a critical error:{' '}
+              {err instanceof Error ? err.message : 'Unknown error'}
+            </p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{ padding: '0.5rem 1rem', marginTop: '0.5rem', cursor: 'pointer' }}
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      );
+    }
   }
 );
 

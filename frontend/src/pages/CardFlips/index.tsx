@@ -34,6 +34,12 @@ export default function CardFlips() {
             🏗️ RADIO Framework
           </button>
         </div>
+        <p className="version-indicator">
+          Current Version:{' '}
+          {activeTab === 'default'
+            ? 'Basic Implementation'
+            : 'RADIO Framework - Advanced Architecture & Optimization'}
+        </p>
       </div>
 
       {/* Project Layout with Dynamic Requirements */}
