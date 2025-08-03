@@ -21,7 +21,6 @@ Advanced React techniques and patterns demonstrated in the projects. This sectio
 ### Advanced Patterns
 
 - **[Effect Dependency Management](./effect-dependency-guide.md)** - Advanced useEffect patterns and dependency optimization
-- **[State Synchronization](./state-sync-guide.md)** - Keeping related state values in sync
 - **[Performance Optimization](./performance-optimization-guide.md)** - React.memo, useMemo, useCallback best practices
 
 ---
