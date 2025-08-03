@@ -4,15 +4,26 @@ This section contains educational materials and best practices for React develop
 
 ## 📚 Available Guides
 
+### [Design Patterns](./design-patterns/)
+
+Architectural and development patterns:
+
+- Architectural patterns (Monorepo, Feature-based organization)
+- React patterns (Container/Presentational, Custom Hooks)
+- State management patterns (Local vs Global, State Lifting)
+- Data flow patterns (API abstraction, Caching strategies)
+- UI component patterns (Atomic design, Responsive patterns)
+- Performance patterns (Code splitting, Memoization)
+
 ### [React Concepts](./react-concepts/)
 
-Core React patterns and concepts:
+Advanced React concepts and techniques:
 
-- Array methods and data manipulation
-- State updates and immutability
-- Nested state management
-- API integration patterns
-- Performance considerations
+- Complex state management strategies
+- Performance optimization techniques
+- Advanced component composition
+- Custom hooks and effect patterns
+- Error boundary implementations
 
 ### [Testing](./testing/)
 

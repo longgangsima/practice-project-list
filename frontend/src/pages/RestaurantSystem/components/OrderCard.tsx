@@ -28,14 +28,3 @@ export default function OrderCard({ order }: OrderCardProps) {
     </div>
   );
 }
-
-/**
- *       // <div className="order-customer">{order.customer}</div>
-      // <div className="order-spice">{order.spice}</div>
-      // <div className="order-base">{order.base}</div>
-      // <div className="order-protein">{order.protein}</div>
-      // <div className="order-dressings">{order.dressings.join(', ')}</div>
-      // <div className="order-pickupDate">{order.pickupDate}</div>
-      // <div className="order-comments">{order.comments}</div>
-      {/* <div className="order-address">{order.address}</div> 
- */

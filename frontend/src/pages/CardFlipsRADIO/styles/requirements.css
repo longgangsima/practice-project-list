@@ -1,0 +1,96 @@
+/* RADIO Framework Requirements Display */
+
+.radio-requirements {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 2px solid #e9ecef;
+}
+
+.radio-requirements h3 {
+  color: #007acc;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.requirement-section {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.requirement-section h4 {
+  color: #495057;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.requirement-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requirement-section li {
+  padding: 0.5rem 0;
+  color: #495057;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.requirement-section li::before {
+  content: '';
+  margin-right: 0.5rem;
+}
+
+.framework-highlights {
+  background: #007acc;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.framework-highlights h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.highlights-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.highlight {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+@media (width <= 768px) {
+  .requirements-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-requirements {
+    padding: 1.5rem;
+    margin: 1rem 0;
+  }
+}

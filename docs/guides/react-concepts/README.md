@@ -1,32 +1,40 @@
-# ⚛️ React Concepts & Patterns
+# ⚛️ Advanced React Concepts
 
-Essential React concepts and JavaScript patterns used throughout the projects.
+Advanced React techniques and patterns demonstrated in the projects. This section focuses on complex concepts beyond basic React fundamentals.
 
 ## 📋 Guide Index
 
-### Data Manipulation & Arrays
+### Performance Optimization
 
-- **[Array Methods Guide](./array-methods-guide.md)** - Complete comparison of JavaScript array methods
-- **[Shallow Copy Guide](./shallow-copy-guide.md)** - Understanding shallow vs deep copying
+- **[Shallow Copy Guide](./shallow-copy-guide.md)** - Understanding shallow vs deep copying for performance
+- **[Array Methods Guide](./array-methods-guide.md)** - Efficient array operations and performance implications
 
-### State Management
+### Advanced State Management
 
-- **[Nested Update Guide](./nested-update-guide.md)** - Updating nested objects and arrays
-- **[Deep Nested Updates Guide](./deep-nested-updates-guide.md)** - Advanced nested state patterns
+- **[Nested Update Guide](./nested-update-guide.md)** - Complex nested state updates and immutability
+- **[Deep Nested Updates Guide](./deep-nested-updates-guide.md)** - Advanced state normalization and update patterns
 
-### API Integration
+### API Integration & Data Flow
 
-- **[Correct API Guide](./correct-api-guide.md)** - Best practices for API integration
+- **[Correct API Guide](./correct-api-guide.md)** - Advanced API patterns, error handling, and data transformation
+
+### Advanced Patterns
+
+- **[Effect Dependency Management](./effect-dependency-guide.md)** - Advanced useEffect patterns and dependency optimization
+- **[State Synchronization](./state-sync-guide.md)** - Keeping related state values in sync
+- **[Performance Optimization](./performance-optimization-guide.md)** - React.memo, useMemo, useCallback best practices
 
 ---
 
-## 🎯 Key Concepts Covered
+## 🎯 Advanced Concepts Covered
 
-### 1. **Immutability**
+### 1. **State Normalization**
 
-Understanding why and how to update state immutably in React.
+Flattening complex nested state for better performance and easier updates.
 
-### 2. **Array Methods**
+### 2. **Memoization Strategies**
+
+Strategic use of React.memo, useMemo, and useCallback for optimal performance.
 
 Efficient data manipulation using JavaScript's built-in array methods.
 
