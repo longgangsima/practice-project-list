@@ -4,6 +4,20 @@ This section documents the architectural and design patterns used throughout the
 
 ## 📚 Available Pattern Documentation
 
+### [Feature-Based Architecture](./feature-based-architecture.md) ⭐
+
+**The CardFlipsRADIO Approach** - A comprehensive architectural pattern for scalable React applications.
+
+This complete guide covers:
+
+- **📁 Folder Structure** - Complete organization guide and naming conventions
+- **🎯 Core Principles** - 5 fundamental principles with implementation examples
+- **🚀 Implementation Guide** - Step-by-step setup with templates and real examples
+- **🏭 Industry Usage** - Real-world applications across companies and sectors
+- **🔄 Other Patterns** - Alternative architectural approaches and comparison matrix
+
+_All knowledge consolidated in a single, comprehensive document_
+
 ### [Architectural Patterns](./architectural-patterns.md)
 
 System-level design patterns:
