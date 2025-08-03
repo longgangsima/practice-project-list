@@ -1,6 +1,6 @@
 import { ProjectDetailLayout } from '../../components';
+import ImageCarouselContainer from './components/ImageCarouselContainer';
 import ImageCarouselRequirements from './components/ImageCarouselRequirements';
-import ImageCarouselContainer from './containers/ImageCarouselContainer';
 import './styles.css';
 
 const images = [
