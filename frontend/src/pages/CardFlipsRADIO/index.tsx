@@ -22,6 +22,13 @@ const RADIOGameBoard = memo(
       const { gameState, gameStats, initializeGame, handleCardClick, resetGame, config } =
         useGameEngine({ gridSize, flipDelay });
 
+      // FIXED: "Maximum update depth exceeded" infinite re-render error
+      // ERROR: useEffect had [initializeGame, gridSize] dependencies where initializeGame
+      //        was being recreated on every render due to unstable gameConfig object
+      // FIX: Split into two separate useEffects with stable dependencies:
+      //      1. Initialize once on mount (empty dependency array)
+      //      2. Handle grid size changes with ref-based comparison
+
       // Initialize game on component mount and when grid size changes
       useEffect(() => {
         if (lastGridSizeRef.current !== gridSize) {
@@ -35,7 +42,7 @@ const RADIOGameBoard = memo(
         }
       }, [gridSize]);
 
-      // Initialize on first mount
+      // Initialize on first mount - prevents infinite loop by using empty deps
       useEffect(() => {
         try {
           initializeGame();
@@ -43,7 +50,7 @@ const RADIOGameBoard = memo(
           console.error('Failed to initialize game:', err);
           setError(err instanceof Error ? err.message : 'Failed to initialize game');
         }
-      }, []); // Only run once on mount
+      }, []); // Only run once on mount - CRITICAL: empty array prevents infinite loop
 
       const handleNewGame = () => {
         try {

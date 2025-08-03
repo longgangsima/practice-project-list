@@ -11,6 +11,11 @@ export function useGameEngine(config: Partial<GameConfig> = {}) {
   const matchingEngine = useRef(MatchingEngineService.getInstance());
   const flipDelayRef = useRef<NodeJS.Timeout>();
 
+  // FIXED: Infinite re-render bug caused by unstable gameConfig object
+  // ERROR: gameConfig was being created as a new object on every render, causing
+  //        initializeGame to be recreated, which triggered useEffect infinitely
+  // FIX: Use useMemo to stabilize gameConfig object, only recreate when actual
+  //      config values change (gridSize, flipDelay, letters)
   const gameConfig: GameConfig = useMemo(
     () => ({
       gridSize: (config.gridSize || GAME_CONFIG.DEFAULT_GRID_SIZE) as 2 | 4 | 6,
