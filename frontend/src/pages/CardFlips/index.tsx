@@ -1,39 +1,65 @@
 import { useState } from 'react';
 import { ProjectDetailLayout } from '../../components';
+import AdvancedGameBoard from './advanced';
+import AdvancedRequirements from './advanced/components/Requirements/RADIORequirements';
+import BasicGameBoard from './basic/components/GameBoard';
+import BasicRequirements from './basic/components/Requirements';
+import { generateRandomCards } from './basic/utils';
 import './css/card.css';
 import './css/layout.css';
-import CardFlipsRequirements from './default/components/CardFlipsRequirements';
-import GameBoard from './default/components/GameBoard';
-import { generateRandomCards } from './default/utils';
-import RADIOGameBoard from './radio';
-import RADIORequirementsImpl from './radio/components/Requirements/RADIORequirements';
 
 export default function CardFlips() {
-  const [activeTab, setActiveTab] = useState<'default' | 'radio'>('default');
+  const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic');
 
   // Dynamic requirements based on active tab
   const getCurrentRequirements = () => {
-    return activeTab === 'default' ? <CardFlipsRequirements /> : <RADIORequirementsImpl />;
+    return activeTab === 'basic' ? <BasicRequirements /> : <AdvancedRequirements />;
   };
 
-  // Compact implementation tabs component
-  const implementationTabs = (
-    <div className="compact-implementation-tabs">
-      <span className="compact-tab-label">🃏 Version:</span>
-      <div className="compact-tab-buttons">
-        <button
-          className={`compact-tab-button ${activeTab === 'default' ? 'active' : ''}`}
-          onClick={() => setActiveTab('default')}
-        >
-          📚 Basic
-        </button>
-        <button
-          className={`compact-tab-button ${activeTab === 'radio' ? 'active' : ''}`}
-          onClick={() => setActiveTab('radio')}
-        >
-          🏗️ Advanced
-        </button>
+  return (
+    <div className="card-flips-wrapper">
+      {/* Tab Navigation at Top Level */}
+      <div className="implementation-tabs">
+        <h1>🃏 Card Flips Memory Game</h1>
+        <div className="tab-buttons">
+          <button
+            className={`tab-button ${activeTab === 'basic' ? 'active' : ''}`}
+            onClick={() => setActiveTab('basic')}
+          >
+            📚 Basic Implementation
+          </button>
+          <button
+            className={`tab-button ${activeTab === 'advanced' ? 'active' : ''}`}
+            onClick={() => setActiveTab('advanced')}
+          >
+            🏗️ Advanced (RADIO)
+          </button>
+        </div>
+        <p className="version-indicator">
+          Current Version:{' '}
+          {activeTab === 'basic'
+            ? 'Basic Implementation'
+            : 'RADIO Framework - Advanced Architecture & Optimization'}
+        </p>
       </div>
+
+      {/* Project Layout with Dynamic Requirements */}
+      <ProjectDetailLayout currentPath="/card-flips" projectRequirements={getCurrentRequirements()}>
+        <div className="card-flips-container">
+          {/* Tab Content */}
+          <div className="tab-content">
+            {activeTab === 'basic' ? (
+              <div className="implementation-section">
+                <BasicGameBoard Cards={generateRandomCards()} />
+              </div>
+            ) : (
+              <div className="implementation-section">
+                <AdvancedGameBoard gridSize={4} flipDelay={1000} />
+              </div>
+            )}
+          </div>
+        </div>
+      </ProjectDetailLayout>
     </div>
   );
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { CardType } from '../types'; // Updated import path
-import CardObject from './CardObject';
+import Card from './Card';
 
 interface GameBoardProps {
   Cards: CardType[];
@@ -93,7 +93,7 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
       {/* Cards Grid */}
       <div className="cards-grid">
         {cards.map(card => (
-          <CardObject
+          <Card
             key={card.id}
             id={card.id}
             letter={card.letter}
