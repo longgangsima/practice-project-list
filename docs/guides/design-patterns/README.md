@@ -4,6 +4,20 @@ This section documents the architectural and design patterns used throughout the
 
 ## 📚 Available Pattern Documentation
 
+### [Feature-Based Architecture](./feature-based-architecture.md) ⭐
+
+**The CardFlipsRADIO Approach** - A comprehensive architectural pattern for scalable React applications.
+
+This complete guide covers:
+
+- **📁 Folder Structure** - Complete organization guide and naming conventions
+- **🎯 Core Principles** - 5 fundamental principles with implementation examples
+- **🚀 Implementation Guide** - Step-by-step setup with templates and real examples
+- **🏭 Industry Usage** - Real-world applications across companies and sectors
+- **🔄 Other Patterns** - Alternative architectural approaches and comparison matrix
+
+_All knowledge consolidated in a single, comprehensive document_
+
 ### [Architectural Patterns](./architectural-patterns.md)
 
 System-level design patterns:
@@ -32,32 +46,29 @@ State handling strategies:
 - **State Normalization** - Flat state structure patterns
 - **Optimistic Updates** - UI responsiveness patterns
 
-### [Data Flow Patterns](./data-flow-patterns.md)
+---
 
-Data handling and API patterns:
+## 🚀 Additional Pattern Areas
 
-- **API Abstraction Layer** - Service-oriented architecture
-- **Data Fetching Patterns** - Loading states and error handling
-- **Cache Strategies** - Performance optimization
-- **Request/Response Transformation** - Data processing patterns
+The following pattern areas are demonstrated throughout the codebase and covered in the React Concepts guides:
 
-### [UI Component Patterns](./ui-component-patterns.md)
+### Data Flow & API Patterns
 
-User interface design patterns:
+- API integration and error handling (see Restaurant System)
+- Loading states and data transformation
+- Request/response patterns
 
-- **Atomic Design Principles** - Component hierarchy
-- **Responsive Design Patterns** - Mobile-first approach
-- **Animation Patterns** - Smooth user interactions
-- **Accessibility Patterns** - Inclusive design
+### UI Component Patterns
 
-### [Performance Patterns](./performance-patterns.md)
+- Responsive design implementation
+- Component composition patterns
+- Accessibility considerations
 
-Optimization strategies:
+### Performance Patterns
 
-- **Code Splitting** - Bundle optimization
-- **Memoization Strategies** - React.memo, useMemo, useCallback
-- **Virtual Scrolling** - Large list handling
-- **Progressive Loading** - Incremental content delivery
+- Code splitting with lazy loading
+- Memoization strategies (React.memo, useMemo, useCallback)
+- Efficient re-rendering patterns
 
 ---
 
@@ -73,7 +84,7 @@ Optimization strategies:
 
 ### Pattern Implementation Guidelines
 
-1. **Start Simple** - Don't over-engineer for current needs
+1. **Start Simple** - Do not over-engineer for current needs
 2. **Evolve Gradually** - Refactor to patterns as complexity grows
 3. **Document Decisions** - Explain why patterns were chosen
 4. **Team Alignment** - Ensure consistent pattern usage

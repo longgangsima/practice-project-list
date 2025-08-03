@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CardType } from '../types';
+import { CardType } from '../types'; // Updated import path
 import CardObject from './CardObject';
 
 interface GameBoardProps {
@@ -12,8 +12,16 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
   const [moves, setMoves] = useState(0);
 
   const handleCardClick = (id: number) => {
-    if (flippedCards.length >= 2) return;
-    if (cards[id].isFlipped || cards[id].isMatched) return;
+    // Find the card object from the current state
+    const clickedCard = cards.find(card => card.id === id);
+
+    // Prevent clicking if:
+    // - The card doesn't exist.
+    // - Two cards are already flipped and being compared.
+    // - The clicked card is already flipped or matched.
+    if (!clickedCard || flippedCards.length >= 2 || clickedCard.isFlipped || clickedCard.isMatched) {
+      return;
+    }
 
     const newFlippedCards = [...flippedCards, id];
     setFlippedCards(newFlippedCards);
@@ -26,10 +34,12 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
       setMoves(pre => pre + 1);
 
       const [firstId, secondId] = newFlippedCards;
-      const firstCard = cards[firstId];
-      const secondCard = cards[secondId];
 
-      if (firstCard.letter === secondCard.letter) {
+      const firstCard = cards.find(c => c.id === firstId);
+      const secondCard = cards.find(c => c.id === secondId);
+      console.log('secondCard: ', secondCard);
+
+      if (firstCard && secondCard && firstCard.letter === secondCard.letter) {
         setCards(preCards =>
           preCards.map(card =>
             card.id === firstId || card.id === secondId ? { ...card, isMatched: true } : card

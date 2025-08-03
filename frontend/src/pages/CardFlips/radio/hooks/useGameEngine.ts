@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { CardGeneratorService } from '../services/CardGenerator';
 import { MatchingEngineService } from '../services/MatchingEngine';
 import { GameConfig } from '../types/GameTypes';
@@ -11,12 +11,20 @@ export function useGameEngine(config: Partial<GameConfig> = {}) {
   const matchingEngine = useRef(MatchingEngineService.getInstance());
   const flipDelayRef = useRef<NodeJS.Timeout>();
 
-  const gameConfig: GameConfig = {
-    gridSize: (config.gridSize || GAME_CONFIG.DEFAULT_GRID_SIZE) as 2 | 4 | 6,
-    flipDelay: config.flipDelay || GAME_CONFIG.DEFAULT_FLIP_DELAY,
-    maxFlippedCards: GAME_CONFIG.MAX_FLIPPED_CARDS,
-    letters: config.letters || GAME_CONFIG.LETTERS,
-  };
+  // FIXED: Infinite re-render bug caused by unstable gameConfig object
+  // ERROR: gameConfig was being created as a new object on every render, causing
+  //        initializeGame to be recreated, which triggered useEffect infinitely
+  // FIX: Use useMemo to stabilize gameConfig object, only recreate when actual
+  //      config values change (gridSize, flipDelay, letters)
+  const gameConfig: GameConfig = useMemo(
+    () => ({
+      gridSize: (config.gridSize || GAME_CONFIG.DEFAULT_GRID_SIZE) as 2 | 4 | 6,
+      flipDelay: config.flipDelay || GAME_CONFIG.DEFAULT_FLIP_DELAY,
+      maxFlippedCards: GAME_CONFIG.MAX_FLIPPED_CARDS,
+      letters: config.letters || GAME_CONFIG.LETTERS,
+    }),
+    [config.gridSize, config.flipDelay, config.letters]
+  );
 
   // Initialize game
   const initializeGame = useCallback(() => {
@@ -42,6 +50,10 @@ export function useGameEngine(config: Partial<GameConfig> = {}) {
     [state.gameStatus, actions]
   );
 
+  // FIXED: Move increment bug - moves were incrementing thousands of times
+  // ERROR: actions object was being recreated on every render in useGameState,
+  //        causing this useEffect to run infinitely when 2 cards were flipped
+  // FIX: Memoized actions object in useGameState to stabilize dependencies
   // Process flipped cards for matching
   useEffect(() => {
     if (state.flippedCards.length === 2) {
