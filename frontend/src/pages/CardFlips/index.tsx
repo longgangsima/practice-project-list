@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { ProjectDetailLayout } from '../../components';
+import AdvancedGameBoard from './advanced';
+import AdvancedRequirements from './advanced/components/Requirements/RADIORequirements';
+import BasicGameBoard from './basic/components/GameBoard';
+import BasicRequirements from './basic/components/Requirements';
+import { generateRandomCards } from './basic/utils';
 import './css/card.css';
 import './css/layout.css';
-import CardFlipsRequirements from './default/components/CardFlipsRequirements';
-import GameBoard from './default/components/GameBoard';
-import { generateRandomCards } from './default/utils';
-import RADIOGameBoard from './radio';
-import RADIORequirementsImpl from './radio/components/Requirements/RADIORequirements';
 
 export default function CardFlips() {
-  const [activeTab, setActiveTab] = useState<'default' | 'radio'>('default');
+  const [activeTab, setActiveTab] = useState<'basic' | 'advanced'>('basic');
 
   // Dynamic requirements based on active tab
   const getCurrentRequirements = () => {
-    return activeTab === 'default' ? <CardFlipsRequirements /> : <RADIORequirementsImpl />;
+    return activeTab === 'basic' ? <BasicRequirements /> : <AdvancedRequirements />;
   };
 
   return (
@@ -23,21 +23,21 @@ export default function CardFlips() {
         <h1>🃏 Card Flips Memory Game</h1>
         <div className="tab-buttons">
           <button
-            className={`tab-button ${activeTab === 'default' ? 'active' : ''}`}
-            onClick={() => setActiveTab('default')}
+            className={`tab-button ${activeTab === 'basic' ? 'active' : ''}`}
+            onClick={() => setActiveTab('basic')}
           >
-            📚 Current Implementation
+            📚 Basic Implementation
           </button>
           <button
-            className={`tab-button ${activeTab === 'radio' ? 'active' : ''}`}
-            onClick={() => setActiveTab('radio')}
+            className={`tab-button ${activeTab === 'advanced' ? 'active' : ''}`}
+            onClick={() => setActiveTab('advanced')}
           >
-            🏗️ RADIO Framework
+            🏗️ Advanced (RADIO)
           </button>
         </div>
         <p className="version-indicator">
           Current Version:{' '}
-          {activeTab === 'default'
+          {activeTab === 'basic'
             ? 'Basic Implementation'
             : 'RADIO Framework - Advanced Architecture & Optimization'}
         </p>
@@ -48,13 +48,13 @@ export default function CardFlips() {
         <div className="card-flips-container">
           {/* Tab Content */}
           <div className="tab-content">
-            {activeTab === 'default' ? (
+            {activeTab === 'basic' ? (
               <div className="implementation-section">
-                <GameBoard Cards={generateRandomCards()} />
+                <BasicGameBoard Cards={generateRandomCards()} />
               </div>
             ) : (
               <div className="implementation-section">
-                <RADIOGameBoard gridSize={4} flipDelay={1000} />
+                <AdvancedGameBoard gridSize={4} flipDelay={1000} />
               </div>
             )}
           </div>
