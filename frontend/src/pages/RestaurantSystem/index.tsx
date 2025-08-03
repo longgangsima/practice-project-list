@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { ProjectLayout } from '../../components';
-import { Order } from './types';
+import { ProjectDetailLayout } from '../../components';
 import FormOrder from './components/FormOrder';
 import OrderCard from './components/OrderCard';
+import RestaurantRequirements from './components/RestaurantRequirements';
 import optionData from './data/optionData.json';
 import orders from './data/orders.json';
 import './styles/basic.css';
+import { Order } from './types';
 export default function RestaurantSystem() {
   const [orderList, setOrderList] = useState<Order[]>(orders);
 
@@ -18,7 +19,10 @@ export default function RestaurantSystem() {
   };
 
   return (
-    <ProjectLayout currentPath="/restaurant-system">
+    <ProjectDetailLayout
+      currentPath="/restaurant-system"
+      projectRequirements={<RestaurantRequirements />}
+    >
       <div className="create-order">
         <FormOrder onAdd={handleOrderCreation} optionData={optionData} />
       </div>
@@ -28,6 +32,6 @@ export default function RestaurantSystem() {
           <OrderCard key={order.id} order={order} />
         ))}
       </div>
-    </ProjectLayout>
+    </ProjectDetailLayout>
   );
 }

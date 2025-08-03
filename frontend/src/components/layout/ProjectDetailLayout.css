@@ -1,0 +1,149 @@
+.project-detail-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.home-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease;
+}
+
+.home-link:hover {
+  color: #495057;
+}
+
+.home-link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+.project-detail-container {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1rem;
+  min-height: calc(100vh - 200px);
+}
+
+/* When only main content (no sidebars) */
+.project-detail-container:has(.project-main-content:only-child) {
+  grid-template-columns: 1fr;
+}
+
+/* When main + left sidebar (two-column layout) */
+.project-detail-container:has(.project-requirements) {
+  grid-template-columns: 300px 1fr;
+}
+
+.project-requirements {
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  height: fit-content;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #dee2e6;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.sidebar-content {
+  padding: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.project-main-content {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+  padding: 2rem;
+  min-height: 500px;
+}
+
+/* Responsive Design */
+@media (width <= 1200px) {
+  .project-detail-container:has(.project-requirements) {
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (width <= 992px) {
+  .project-detail-wrapper {
+    padding: 1rem;
+  }
+
+  .project-detail-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-requirements {
+    position: static;
+    max-height: 400px;
+  }
+
+  .project-main-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (width <= 768px) {
+  .project-detail-wrapper {
+    padding: 0.75rem;
+  }
+
+  .project-main-content {
+    padding: 1rem;
+  }
+
+  .sidebar-content {
+    padding: 1rem;
+  }
+
+  .sidebar-header {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Utility classes for different layout needs */
+.project-detail-wrapper--wide {
+  max-width: 1600px;
+}
+
+.project-detail-wrapper--narrow {
+  max-width: 1200px;
+}
+
+.project-detail-wrapper--compact .project-detail-container {
+  gap: 1rem;
+}
+
+.project-detail-wrapper--spacious .project-detail-container {
+  gap: 3rem;
+}

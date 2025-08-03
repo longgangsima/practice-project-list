@@ -1,4 +1,5 @@
 // Layout Components
+export { default as ProjectDetailLayout } from './layout/ProjectDetailLayout';
 export { default as ProjectLayout } from './layout/ProjectLayout';
 
 // Navigation Components

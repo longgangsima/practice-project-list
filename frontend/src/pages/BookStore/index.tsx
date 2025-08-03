@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ProjectLayout } from '../../components';
+import { ProjectDetailLayout } from '../../components';
 import { fetchBooksWithAuthors } from './api/simpleApi';
 import BookCard from './components/BookCard';
 import BookForm from './components/BookForm';
+import BookStoreRequirements from './components/BookStoreRequirements';
 
 type BookType = {
   id: string;
@@ -143,28 +144,34 @@ export default function BookStore() {
 
   if (loading) {
     return (
-      <ProjectLayout currentPath="/book-store">
+      <ProjectDetailLayout
+        currentPath="/book-store"
+        projectRequirements={<BookStoreRequirements />}
+      >
         <div style={{ textAlign: 'center', padding: '2rem' }}>
           <div style={{ fontSize: '2rem' }}>📚</div>
           <p>Loading books...</p>
         </div>
-      </ProjectLayout>
+      </ProjectDetailLayout>
     );
   }
 
   if (error) {
     return (
-      <ProjectLayout currentPath="/book-store">
+      <ProjectDetailLayout
+        currentPath="/book-store"
+        projectRequirements={<BookStoreRequirements />}
+      >
         <div style={{ textAlign: 'center', padding: '2rem', color: 'red' }}>
           <p>Error: {error}</p>
           <button onClick={loadBooksData}>Retry</button>
         </div>
-      </ProjectLayout>
+      </ProjectDetailLayout>
     );
   }
 
   return (
-    <ProjectLayout currentPath="/book-store">
+    <ProjectDetailLayout currentPath="/book-store" projectRequirements={<BookStoreRequirements />}>
       {/* 🔄 Toggle Controls */}
       <div
         style={{
@@ -261,6 +268,6 @@ export default function BookStore() {
           100% { transform: rotate(360deg); }
         }
       `}</style>
-    </ProjectLayout>
+    </ProjectDetailLayout>
   );
 }
