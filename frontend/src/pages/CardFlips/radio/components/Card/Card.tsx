@@ -15,7 +15,7 @@ const CardComponent = memo(({ card, onCardClick, isDisabled = false }: CardCompo
   };
 
   const getCardClassName = () => {
-    let className = 'radio-card';
+    let className = 'game-card';
 
     if (card.isFlipped) className += ' flipped';
     if (card.isMatched) className += ' matched';

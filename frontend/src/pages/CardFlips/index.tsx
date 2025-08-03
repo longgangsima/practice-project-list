@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { ProjectDetailLayout } from '../../components';
-import RADIORequirementsImpl from '../CardFlipsRADIO/components/Requirements/RADIORequirements';
-import RADIOGameBoard from '../CardFlipsRADIO/index';
-import CardFlipsRequirements from './components/CardFlipsRequirements';
-import GameBoard from './components/GameBoard';
-import './styles.css';
-import { generateRandomCards } from './utils';
+import './css/card.css';
+import './css/layout.css';
+import CardFlipsRequirements from './default/components/CardFlipsRequirements';
+import GameBoard from './default/components/GameBoard';
+import { generateRandomCards } from './default/utils';
+import RADIOGameBoard from './radio';
+import RADIORequirementsImpl from './radio/components/Requirements/RADIORequirements';
 
 export default function CardFlips() {
   const [activeTab, setActiveTab] = useState<'default' | 'radio'>('default');

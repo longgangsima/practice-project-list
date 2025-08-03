@@ -50,6 +50,10 @@ export function useGameEngine(config: Partial<GameConfig> = {}) {
     [state.gameStatus, actions]
   );
 
+  // FIXED: Move increment bug - moves were incrementing thousands of times
+  // ERROR: actions object was being recreated on every render in useGameState,
+  //        causing this useEffect to run infinitely when 2 cards were flipped
+  // FIX: Memoized actions object in useGameState to stabilize dependencies
   // Process flipped cards for matching
   useEffect(() => {
     if (state.flippedCards.length === 2) {

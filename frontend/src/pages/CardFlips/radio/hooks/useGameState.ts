@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useMemo, useReducer } from 'react';
 import { Card, GameAction, GameState } from '../types/GameTypes';
 import { GAME_CONFIG } from '../utils/constants';
 
@@ -155,9 +155,12 @@ export function useGameState() {
     };
   }, [state.gameStatus, state.startTime, updateTime]);
 
-  return {
-    state,
-    actions: {
+  // FIXED: Memoize actions object to prevent infinite re-renders
+  // ERROR: actions was being recreated on every render, causing useEffect
+  //        in useGameEngine to run infinitely, incrementing moves thousands of times
+  // FIX: Use useMemo to stabilize actions object reference
+  const actions = useMemo(
+    () => ({
       initGame,
       startGame,
       flipCard,
@@ -167,6 +170,22 @@ export function useGameState() {
       winGame,
       resetGame,
       updateTime,
-    },
+    }),
+    [
+      initGame,
+      startGame,
+      flipCard,
+      matchCards,
+      resetFlippedCards,
+      incrementMoves,
+      winGame,
+      resetGame,
+      updateTime,
+    ]
+  );
+
+  return {
+    state,
+    actions,
   };
 }

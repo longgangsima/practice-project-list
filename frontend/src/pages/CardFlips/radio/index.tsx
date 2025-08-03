@@ -1,11 +1,11 @@
 import { memo, useEffect, useRef, useState } from 'react';
+import '../css/radio/game.css';
+import '../css/radio/requirements.css';
 import GameBoard from './components/GameBoard/GameBoard';
 import GameControls from './components/GameBoard/GameControls';
 import GameStats from './components/GameBoard/GameStats';
 import GridSizeSelector from './components/UI/GridSizeSelector';
 import { useGameEngine } from './hooks/useGameEngine';
-import './styles/game.css';
-import './styles/requirements.css';
 
 interface RADIOGameBoardProps {
   gridSize?: 2 | 4 | 6;
