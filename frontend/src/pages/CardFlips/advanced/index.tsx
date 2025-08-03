@@ -1,19 +1,19 @@
 import { memo, useEffect, useRef, useState } from 'react';
-import '../css/radio/game.css';
-import '../css/radio/requirements.css';
+import '../css/advanced/game.css';
+import '../css/advanced/requirements.css';
 import GameBoard from './components/GameBoard/GameBoard';
 import GameControls from './components/GameBoard/GameControls';
 import GameStats from './components/GameBoard/GameStats';
 import GridSizeSelector from './components/UI/GridSizeSelector';
 import { useGameEngine } from './hooks/useGameEngine';
 
-interface RADIOGameBoardProps {
+interface AdvancedGameBoardProps {
   gridSize?: 2 | 4 | 6;
   flipDelay?: number;
 }
 
-const RADIOGameBoard = memo(
-  ({ gridSize: initialGridSize = 4, flipDelay = 1000 }: RADIOGameBoardProps) => {
+const AdvancedGameBoard = memo(
+  ({ gridSize: initialGridSize = 4, flipDelay = 1000 }: AdvancedGameBoardProps) => {
     const [gridSize, setGridSize] = useState<2 | 4 | 6>(initialGridSize);
     const [error, setError] = useState<string | null>(null);
     const lastGridSizeRef = useRef<2 | 4 | 6>(initialGridSize);
@@ -86,7 +86,7 @@ const RADIOGameBoard = memo(
 
       if (error) {
         return (
-          <div className="radio-game-container">
+          <div className="advanced-game-container">
             <div
               style={{
                 background: '#ffebee',
@@ -96,7 +96,7 @@ const RADIOGameBoard = memo(
                 marginBottom: '1rem',
               }}
             >
-              <h3>⚠️ Error in RADIO Game</h3>
+              <h3>⚠️ Error in Advanced Game</h3>
               <p>{error}</p>
               <button
                 onClick={() => {
@@ -113,7 +113,7 @@ const RADIOGameBoard = memo(
       }
 
       return (
-        <div className="radio-game-container">
+        <div className="advanced-game-container">
           {/* Grid Size Selector */}
           <GridSizeSelector
             currentSize={gridSize}
@@ -150,7 +150,7 @@ const RADIOGameBoard = memo(
           {gameState.gameStatus === 'playing' && (
             <div className="performance-indicator" role="status" aria-live="polite">
               <small>
-                🚀 RADIO Framework: Optimized rendering, advanced state management,
+                🚀 Advanced Framework: Optimized rendering, advanced state management,
                 accessibility-first design
               </small>
             </div>
@@ -158,9 +158,9 @@ const RADIOGameBoard = memo(
         </div>
       );
     } catch (err) {
-      console.error('Critical error in RADIO Game:', err);
+      console.error('Critical error in Advanced Game:', err);
       return (
-        <div className="radio-game-container">
+        <div className="advanced-game-container">
           <div
             style={{
               background: '#ffebee',
@@ -171,7 +171,7 @@ const RADIOGameBoard = memo(
           >
             <h3>⚠️ Critical Error</h3>
             <p>
-              The RADIO game encountered a critical error:{' '}
+              The Advanced game encountered a critical error:{' '}
               {err instanceof Error ? err.message : 'Unknown error'}
             </p>
             <button
@@ -187,6 +187,6 @@ const RADIOGameBoard = memo(
   }
 );
 
-RADIOGameBoard.displayName = 'RADIOGameBoard';
+AdvancedGameBoard.displayName = 'AdvancedGameBoard';
 
-export default RADIOGameBoard;
+export default AdvancedGameBoard;
