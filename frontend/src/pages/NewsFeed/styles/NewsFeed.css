@@ -1,0 +1,231 @@
+/* News Feed Project Styles */
+.news-feed {
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  height: 100%;
+}
+
+.news-feed-header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+}
+
+.news-feed-header h1 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.news-feed-header p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.news-feed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.end-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.end-message p {
+  color: white;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.news-feed-wrapper {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tabs-container {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.tabs-container h1 {
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.tabs-container p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.tab-button {
+  background: #fff;
+  border: 1.5px solid #dee2e6;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 140px;
+  font-size: 0.85rem;
+}
+
+.tab-button:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.tab-button.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.tab-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tab-description {
+  display: block;
+  opacity: 0.8;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+/* Removed old layout - now using ProjectDetailLayout */
+
+.left-panel {
+  flex: 0 0 35%; /* Use percentage for better responsiveness */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.right-panel {
+  flex: 1; /* Take remaining space */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.content-wrapper {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Override news feed styles for right panel */
+.right-panel .news-feed {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.right-panel .news-feed-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-bottom: 0;
+  padding: 15px 20px;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.right-panel .news-feed-header h1 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+
+.right-panel .news-feed-header p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+.right-panel .news-feed-container {
+  padding: 15px;
+  height: calc(100% - 80px); /* Reduced header space */
+  overflow-y: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .content-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+  }
+
+  .left-panel {
+    flex: none;
+    height: 350px; /* Reduced height */
+  }
+
+  .right-panel {
+    flex: none;
+    min-height: 500px; /* Reduced min-height */
+  }
+}
+
+@media (max-width: 768px) {
+  .news-feed {
+    padding: 15px;
+  }
+
+  .news-feed-header h1 {
+    font-size: 2rem;
+  }
+
+  .news-feed-container {
+    gap: 15px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tab-button {
+    min-width: 200px;
+  }
+
+  .content-layout {
+    gap: 15px;
+  }
+
+  .left-panel {
+    height: 350px;
+  }
+
+  .right-panel .news-feed-container {
+    padding: 15px;
+  }
+}
