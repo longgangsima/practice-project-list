@@ -12,6 +12,11 @@ export const projectList: ProjectItem[] = [
     path: '/card-flips',
     description: 'Memory game with tabbed implementations',
   },
+  {
+    name: 'News Feed',
+    path: '/news-feed',
+    description: 'Infinite scroll news feed with mock API',
+  },
   // { name: 'Trading Chart', path: '/trading-chart' },
   { name: 'Restaurant System', path: '/restaurant-system' },
 ];

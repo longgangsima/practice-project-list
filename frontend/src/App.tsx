@@ -7,6 +7,7 @@ import { projectList } from './constants/projectList';
 const ImageCarousel = lazy(() => import('./pages/ImageCarousel'));
 const BookStore = lazy(() => import('./pages/BookStore'));
 const CardFlips = lazy(() => import('./pages/CardFlips'));
+const NewsFeed = lazy(() => import('./pages/NewsFeed'));
 const RestaurantSystem = lazy(() => import('./pages/RestaurantSystem'));
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/image-carousel" element={<ImageCarousel />} />
         <Route path="/book-store" element={<BookStore />} />
         <Route path="/card-flips" element={<CardFlips />} />
+        <Route path="/news-feed" element={<NewsFeed />} />
         <Route path="/restaurant-system" element={<RestaurantSystem />} />
       </Routes>
     </Suspense>

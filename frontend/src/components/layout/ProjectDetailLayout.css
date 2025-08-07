@@ -131,6 +131,23 @@
   border-color: #007acc;
 }
 
+/* Global max-width constraint for better readability */
+.project-main-content > * {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* For projects that need wider content (like news feeds), allow override */
+.project-main-content .wide-content {
+  max-width: none;
+}
+
+/* For projects that need specific wider layouts */
+.project-main-content .extra-wide-content {
+  max-width: 800px;
+}
+
 /* Responsive Design */
 @media (width <= 1200px) {
   .project-detail-container:has(.project-requirements) {
