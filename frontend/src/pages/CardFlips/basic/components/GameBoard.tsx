@@ -31,10 +31,6 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
     const newFlippedCards = [...flippedCards, id];
     setFlippedCards(newFlippedCards);
 
-    setCards(preCards =>
-      preCards.map(card => (card.id === id ? { ...card, isFlipped: true } : card))
-    );
-
     if (newFlippedCards.length === 2) {
       setMoves(pre => pre + 1);
 
@@ -62,6 +58,11 @@ const GameBoard = ({ Cards }: GameBoardProps) => {
         }, 1000);
       }
     }
+
+    // Set the clicked card as flipped (moved to end for async consistency)
+    setCards(preCards =>
+      preCards.map(card => (card.id === id ? { ...card, isFlipped: true } : card))
+    );
   };
 
   const resetGame = () => {
