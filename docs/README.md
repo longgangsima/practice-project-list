@@ -1,41 +1,32 @@
 # 📚 React Practice Projects - Documentation
 
-Welcome to the documentation for the React Practice Projects monorepo. This contains multiple frontend projects with a shared backend API.
+Welcome to the documentation for the React Practice Projects monorepo. This collection focuses on **technical learning**, **interview preparation**, and **practical development patterns**.
 
-## 🏗️ Project Structure
+## � Essential Documentation
 
-```
-react-app/
-├── src/                    # Frontend React applications
-├── backend/               # Shared Node.js/Express API
-└── docs/                  # 📖 Documentation (you are here)
-```
+### **Project Technical Analysis**
 
-## 📖 Documentation Index
+- **[Technical Overview](./PROJECT-OVERVIEW-AUGUST-2025.md)** - React patterns, algorithms, performance optimization
+- **[Card Flips Comparison](./CARD-FLIPS-COMPARISON.md)** - Basic vs Advanced architectural patterns
 
-### 🎯 Project Documentation
+### **Individual Project Guides**
 
-- **[BookStore](../frontend/src/pages/BookStore/README.md)** - Mock API data fetching and processing
-- **[Restaurant System](../frontend/src/pages/RestaurantSystem/README.md)** - Order management system
-- **[Card Flips](../frontend/src/pages/CardFlips/README.md)** - Memory game with tabbed implementations (includes RADIO framework)
-- **[Card Flips Comparison](./CARD-FLIPS-COMPARISON.md)** - Implementation comparison analysis
-- **Image Carousel** - Interactive image carousel
+- **[BookStore](../frontend/src/pages/BookStore/README.md)** - REST API integration, error handling patterns
+- **[Restaurant System](../frontend/src/pages/RestaurantSystem/README.md)** - CRUD operations, complex form management
+- **[Image Carousel](../frontend/src/pages/ImageCarousel/README.md)** - Component composition, event handling
+- **[Card Flips](../frontend/src/pages/CardFlips/README.md)** - Game logic, algorithm implementation, architectural patterns
+- **[News Feed](../frontend/src/pages/NewsFeed/README.md)** - Infinite scroll, performance optimization
 
-### 🧠 [Learning Guides](./guides/)
+### **Interview-Ready Concepts**
 
-- **[React Concepts](./guides/react-concepts/)** - Core React concepts and patterns
-- **[Testing](./guides/testing/)** - Testing strategies and setup guides
+- **[React Patterns](./guides/design-patterns/react-patterns.md)** - Container/Presentational, Custom Hooks, HOCs
+- **[State Management](./guides/design-patterns/state-management-patterns.md)** - Local vs Global, Context API, Reducers
+- **[Performance Optimization](./guides/react-concepts/performance-optimization-guide.md)** - React.memo, useMemo, useCallback
+- **[Effect Dependencies](./guides/react-concepts/effect-dependency-guide.md)** - Advanced useEffect patterns
 
-### 🔧 [Backend Documentation](./backend/)
+### **Development Reference**
 
-- **[Backend Documentation](./backend/)** - API reference and setup
-
-### 📜 [Development History](./development-history/)
-
-- Project restructuring logs
-- Migration documentation
-- Code cleanup summaries
-- Setup and configuration notes
+- **[Backend API](./backend/README.md)** - REST endpoints and data structures
 
 ## 🚀 Quick Start
 
@@ -46,55 +37,37 @@ react-app/
    pnpm dev
    ```
 
-2. **Backend Development:**
+## 🚀 Quick Start
 
-   ```bash
-   cd backend
-   npm install
-   npm start
-   ```
+```bash
+# Frontend
+cd frontend && pnpm install && pnpm dev
 
-3. **Full Stack Development:**
+# Backend
+cd backend && npm install && npm start
+```
 
-   ```bash
-   # Terminal 1: Start backend
-   cd backend && npm start
+## � Key Learning Areas
 
-   # Terminal 2: Start frontend
-   pnpm dev
-   ```
+**Interview-Ready Concepts:**
 
-## 🏛️ Architecture
+- **React Patterns**: Custom hooks, compound components, render props
+- **State Management**: useState, useReducer, Context API, state lifting
+- **Performance**: React.memo, useMemo, useCallback, code splitting
+- **API Integration**: REST patterns, error handling, loading states
+- **Algorithms**: Fisher-Yates shuffle, debouncing, intersection observer
+- **CSS Architecture**: BEM methodology, responsive design, animations
 
-This is a **monorepo** containing:
+**Technical Skills:**
 
-- Multiple React projects in a single frontend app
-- Shared components and utilities
-- Unified backend API serving multiple projects
-- Centralized documentation and guides
-
-## 📱 Available Projects
-
-| Project            | Path                  | Description                    |
-| ------------------ | --------------------- | ------------------------------ |
-| Home               | `/`                   | Project listing and navigation |
-| BookStore          | `/book-store`         | API data fetching patterns     |
-| Restaurant System  | `/restaurant-system`  | CRUD operations and forms      |
-| Image Carousel III | `/image-carousel-iii` | Interactive UI components      |
-
-## 🎓 Learning Objectives
-
-Each project demonstrates different React and web development concepts:
-
-- **API Integration** - Fetching, processing, and error handling
-- **State Management** - useState, useEffect, and state patterns
-- **Form Handling** - Controlled components and validation
-- **Component Architecture** - Reusable and maintainable code
-- **Testing** - Unit tests and manual testing strategies
-- **Backend Integration** - Full-stack development patterns
+- Modern React with hooks and functional components
+- TypeScript integration and type safety
+- API design and backend integration
+- Component composition and architecture
+- Performance optimization techniques
 
 ---
 
-📅 **Last Updated:** June 29, 2025  
-🏷️ **Version:** 1.0.0  
-🧑‍💻 **Maintainer:** Development Team
+📅 **Focus**: Technical learning and interview preparation  
+� **Audience**: Developers and job seekers  
+🧑‍💻 **Approach**: Hands-on practice with real-world patterns

@@ -1,50 +1,45 @@
-# 🏗️ Design Patterns Guide
+# 🏗️ Design Patterns
 
-This section documents the architectural and design patterns used throughout the React Practice Projects.
+Essential React design patterns for interviews and professional development.
 
-## 📚 Available Pattern Documentation
+## 📋 Interview-Ready Patterns
 
-### [Feature-Based Architecture](./feature-based-architecture.md) ⭐
+### **React Component Patterns** ⚛️
 
-**The CardFlipsRADIO Approach** - A comprehensive architectural pattern for scalable React applications.
+- **[React Patterns](./react-patterns.md)** - Container/Presentational, Custom Hooks, Higher-Order Components, Render Props
 
-This complete guide covers:
+### **State Management Patterns** 🔄
 
-- **📁 Folder Structure** - Complete organization guide and naming conventions
-- **🎯 Core Principles** - 5 fundamental principles with implementation examples
-- **🚀 Implementation Guide** - Step-by-step setup with templates and real examples
-- **🏭 Industry Usage** - Real-world applications across companies and sectors
-- **🔄 Other Patterns** - Alternative architectural approaches and comparison matrix
+- **[State Management](./state-management-patterns.md)** - Local vs Global state, Context API, useReducer patterns
 
-_All knowledge consolidated in a single, comprehensive document_
+---
 
-### [Architectural Patterns](./architectural-patterns.md)
+## 🎯 Key Patterns for Interviews
 
-System-level design patterns:
+### **1. Component Composition**
 
-- **Monorepo Structure** - Multi-project organization
-- **Feature-Based Organization** - Project-specific folder structure
-- **Lazy Loading Strategy** - Code splitting and performance optimization
-- **Layout Component Pattern** - Consistent page structure
+- Container/Presentational pattern
+- Compound components
+- Render props pattern
+- Higher-order components (HOCs)
 
-### [React Patterns](./react-patterns.md)
+### **2. State Management**
 
-React-specific design patterns:
+- When to use local vs global state
+- Context API implementation
+- useReducer for complex state
+- State lifting strategies
 
-- **Container/Presentational Components** - Logic separation
-- **Compound Components** - Component composition
-- **Render Props Pattern** - Flexible component APIs
-- **Higher-Order Components (HOCs)** - Component enhancement
-- **Custom Hooks Pattern** - Logic reuse and state management
+### **3. Custom Hooks**
 
-### [State Management Patterns](./state-management-patterns.md)
+- Extracting reusable logic
+- Hook composition patterns
+- Testing custom hooks
+- Performance considerations
 
-State handling strategies:
+---
 
-- **Local State vs Global State** - When to use each approach
-- **State Lifting** - Moving state up the component tree
-- **State Normalization** - Flat state structure patterns
-- **Optimistic Updates** - UI responsiveness patterns
+These patterns are **frequently asked** in React interviews and essential for scalable applications.
 
 ---
 
