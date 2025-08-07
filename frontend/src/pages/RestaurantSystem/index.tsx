@@ -59,7 +59,7 @@ export default function RestaurantSystem() {
         <FormVersionTabs />
         {renderActiveForm()}
       </div>
-      <div className="order-list">
+      <div className="order-list extra-wide-content">
         <h2>Order Process</h2>
         {orderList.map(order => (
           <OrderCard key={order.id} order={order} />

@@ -75,27 +75,56 @@
   background: transparent;
   border: none;
   border-radius: 0;
-  overflow: auto hidden;
-  scrollbar-width: thin;
-  scrollbar-color: #cbd5e0 #f7fafc;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.implementation-section::-webkit-scrollbar {
-  height: 8px;
+/* Compact Implementation Tabs */
+.compact-implementation-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 0;
 }
 
-.implementation-section::-webkit-scrollbar-track {
+.compact-tab-label {
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.compact-tab-buttons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.compact-tab-button {
   background: #f7fafc;
-  border-radius: 4px;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  min-width: 80px;
+  text-align: center;
 }
 
-.implementation-section::-webkit-scrollbar-thumb {
-  background: #cbd5e0;
-  border-radius: 4px;
+.compact-tab-button:hover {
+  background: #edf2f7;
+  color: #2d3748;
 }
 
-.implementation-section::-webkit-scrollbar-thumb:hover {
-  background: #a0aec0;
+.compact-tab-button.active {
+  background: #007acc;
+  color: #fff;
+  border-color: #007acc;
+  box-shadow: 0 2px 4px rgb(0, 122, 204, 0.2);
 }
 
 @keyframes fade-in {
@@ -153,7 +182,6 @@
 
 .game-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
   flex-wrap: wrap;
@@ -229,7 +257,6 @@
 
 .radio-requirements-sidebar .requirement-section {
   margin-bottom: 1.5rem;
-  padding: 1rem;
   background: #f8f9fa;
   border-radius: 8px;
   border-left: 4px solid #007acc;

@@ -43,7 +43,7 @@ export default function CardFlips() {
       projectRequirements={getCurrentRequirements()}
       implementationTabs={implementationTabs}
     >
-      <div className="card-flips-container">
+      <div className="card-flips-container wide-content">
         {/* Tab Content */}
         <div className="tab-content">
           {activeTab === 'basic' ? (

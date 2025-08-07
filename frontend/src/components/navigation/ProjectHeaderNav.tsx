@@ -63,9 +63,6 @@ export default function ProjectHeaderNav({
             </Link>
           )}
         </div>
-
-        {/* Project Title in the same row */}
-        <h1 className="project-title-inline">{current.name}</h1>
       </nav>
     </div>
   );

@@ -37,7 +37,6 @@ export default function ImageCarousel() {
       projectRequirements={<ImageCarouselRequirements />}
     >
       <div className="carousel-page-wrapper">
-        <h1>Image Carousel</h1>
         <ImageCarouselContainer images={images} />
       </div>
     </ProjectDetailLayout>

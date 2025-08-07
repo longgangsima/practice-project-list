@@ -1,11 +1,9 @@
 .carousel-page-wrapper {
-  max-width: 600px;
-  margin: 0 auto; /* horizontally center the whole block */
-  padding: 2rem 1rem;
+  /* Global max-width now handled by ProjectDetailLayout */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center everything horizontally */
-  gap: 1rem; /* Add space between title and carousel */
+  align-items: center;
+  gap: 1rem;
 }
 
 .carousel-page-wrapper h1 {
